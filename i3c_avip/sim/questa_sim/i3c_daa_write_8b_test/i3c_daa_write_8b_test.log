@@ -1,0 +1,1776 @@
+# vsim -vopt work.hvl_top work.hdl_top -voptargs="+acc=npr" -sv_seed random -assertdebug "+UVM_TESTNAME=i3c_daa_write_8b_test" "+UVM_VERBOSITY=UVM_HIGH" "+define+" -l i3c_daa_write_8b_test/i3c_daa_write_8b_test.log -sva -coverage -c -do "log -r /*; add wave -r /*; coverage save -onexit -assert -directive -cvg -codeAll i3c_daa_write_8b_test/i3c_daa_write_8b_test_coverage.ucdb; run -all; exit" -wlf i3c_daa_write_8b_test/waveform.wlf 
+# Start time: 12:42:15 on Apr 27,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "i3c_bit_engine(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "i3c_daa_fsm(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "i3c_sdr_fsm(fast)".
+# ** Warning: ../../rtl_dev/src/I3C_TOP.v(133): (vopt-2685) [TFMPC] - Too few port connections for 'x2'.  Expected 19, found 17.
+# ** Warning: ../../rtl_dev/src/I3C_TOP.v(133): (vopt-2718) [TFMPC] - Missing connection for port 'sdr_ccc_is_read'.
+# ** Warning: ../../rtl_dev/src/I3C_TOP.v(133): (vopt-2718) [TFMPC] - Missing connection for port 'sdr_is_ccc'.
+# ** Note: (vopt-143) Recognized 1 FSM in module "i3c_scl_gen(fast)".
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.apb_master_driver_bfm(fast)
+# Loading work.apb_master_monitor_bfm(fast)
+# Loading work.apb_global_pkg(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.apb_master_pkg(fast)
+# Loading work.i3c_target_driver_bfm(fast)
+# Loading work.i3c_target_monitor_bfm(fast)
+# Loading work.i3c_globals_pkg(fast)
+# Loading work.i3c_target_pkg(fast)
+# Loading work.i3c_controller_driver_bfm(fast)
+# Loading work.i3c_controller_monitor_bfm(fast)
+# Loading work.i3c_controller_pkg(fast)
+# Loading work.i3c_env_pkg(fast)
+# Loading work.i3c_target_seq_pkg(fast)
+# Loading work.apb_master_seq_pkg(fast)
+# Loading work.i3c_ral_virtual_seq_pkg(fast)
+# Loading work.i3c_controller_seq_pkg(fast)
+# Loading work.i3c_virtual_seq_pkg(fast)
+# Loading work.i3c_test_pkg(fast)
+# Loading work.hvl_top(fast)
+# Loading work.hdl_top_sv_unit(fast)
+# Loading work.hdl_top(fast)
+# Loading work.apb_if_sv_unit(fast)
+# Loading work.apb_if(fast)
+# Loading work.i3c_if(fast)
+# Loading work.i3c_wrapper_sv_unit(fast)
+# Loading work.apb_i3c_wrapper(fast)
+# Loading work.I3C_TOP(fast)
+# Loading work.i3c_reg_interface(fast)
+# Loading work.i3c_cmd_ctrl(fast)
+# Loading work.i3c_Tx_FIFO(fast)
+# Loading work.i3c_Rx_FIFO(fast)
+# Loading work.i3c_sdr_fsm(fast)
+# Loading work.i3c_daa_fsm(fast)
+# Loading work.i3c_device_table(fast)
+# Loading work.i3c_bit_engine(fast)
+# Loading work.i3c_scl_gen(fast)
+# Loading work.apb_master_agent_bfm(fast)
+# Loading work.apb_master_driver_bfm_sv_unit(fast)
+# Loading work.apb_master_driver_bfm(fast)
+# Loading work.apb_master_monitor_bfm_sv_unit(fast)
+# Loading work.apb_master_monitor_bfm(fast)
+# Loading work.i3c_controller_agent_bfm(fast)
+# Loading work.i3c_controller_driver_bfm_sv_unit(fast)
+# Loading work.i3c_controller_driver_bfm(fast)
+# Loading work.i3c_controller_monitor_bfm_sv_unit(fast)
+# Loading work.i3c_controller_monitor_bfm(fast)
+# Loading work.i3c_target_agent_bfm(fast)
+# Loading work.i3c_target_driver_bfm_sv_unit(fast)
+# Loading work.i3c_target_driver_bfm(fast)
+# Loading work.i3c_target_monitor_bfm_sv_unit(fast)
+# Loading work.i3c_target_monitor_bfm(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/scl_o', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/scl_oen', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/sda_o', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/sda_oen', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# Sv_Seed = 29601676
+# log -r /*
+#  add wave -r /*
+#  coverage save -onexit -assert -directive -cvg -codeAll i3c_daa_write_8b_test/i3c_daa_write_8b_test_coverage.ucdb
+#  run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test i3c_daa_write_8b_test...
+# HDL TOP
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_agent_bfm.sv(17) @ 0: reporter [apb master agent bfm] APB MASTER AGENT BFM
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(55) @ 0: reporter [APB_MASTER_DRIVER_BFM] APB_MASTER_DRIVER_BFM
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(47) @ 0: reporter [APB_MASTER_MONITOR_BFM] APB MASTER MONITOR BFM
+# I3C_CONTROLLER_DRIVER_BFM
+# I3C_CONTROLLER_MONITOR_BFM
+# controller Agent BFM
+# I3C_TARGET_DRIVER_BFM
+# target Monitor BFM
+# DEBUG_MSHA :: drv_str = i3c_target_driver_bfm_0
+# DEBUG_MSHA :: mon_str = i3c_target_monitor_bfm_0
+# target Agent BFM
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(67) @ 0: uvm_test_top [i3c_daa_write_8b_test] i3c_controller_agent_cfg = 
+#  ----------------------------------------------------------------------------
+# Name                           Type                         Size  Value     
+# ----------------------------------------------------------------------------
+# i3c_controller_agent_cfg_h[0]  i3c_controller_agent_config  -     @526      
+#   isActive                     string                       10    UVM_ACTIVE
+#   no_of_targets                integral                     32    'd1       
+#   dataTransferDirection        string                       9     MSB_FIRST 
+#   primary_prescalar            integral                     3     'd1       
+#   secondary_prescalar          integral                     3     'd0       
+#   clockRateDividerValue        integral                     32    'd4       
+#   hasCoverage                  string                       4     TRUE      
+# ----------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(83) @ 0: uvm_test_top [i3c_daa_write_8b_test] i3c_target_agent_cfg = 
+#  ------------------------------------------------------------------------
+# Name                       Type                     Size  Value         
+# ------------------------------------------------------------------------
+# i3c_target_agent_cfg_h[0]  i3c_target_agent_config  -     @531          
+#   isActive                 string                   10    UVM_ACTIVE    
+#   dataTransferDirection    string                   9     MSB_FIRST     
+#   hasCoverage              string                   4     TRUE          
+#   targetAddress            integral                 7     'h68          
+#   target_id                integral                 32    'd0           
+#   daa_accept_address       integral                 1     'b1           
+#   pid                      integral                 48    'haabbccddeeff
+#   bcr                      integral                 8     'h0           
+#   dcr                      integral                 8     'hc2          
+# ------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(87) @ 0: uvm_test_top [i3c_daa_write_8b_test] i3c_env_cfg = 
+#  ----------------------------------------------------
+# Name                     Type            Size  Value
+# ----------------------------------------------------
+# i3c_env_cfg_h            i3c_env_config  -     @508 
+#   has_scoreboard         integral        1     1    
+#   has_virtual_sequencer  integral        1     1    
+#   no_of_controllers      integral        32    'd1  
+#   no_of_targets          integral        32    'd1  
+#   has_daa                integral        1     'd0  
+#   no_of_daa_devices      integral        32    'd0  
+# ----------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(131) @ 0: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_INIT] Loaded expected device[0]: PID=0xaabbccddeeff BCR=0x0 DCR=0xc2
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# ---------------------------------------------------------------------------------
+# Name                              Type                                Size  Value
+# ---------------------------------------------------------------------------------
+# uvm_test_top                      i3c_daa_write_8b_test               -     @477 
+#   i3c_env_h                       i3c_env                             -     @509 
+#     apb_master_agent_h            apb_master_agent                    -     @542 
+#       apb_master_cov_h            apb_master_coverage                 -     @868 
+#         analysis_imp              uvm_analysis_imp                    -     @875 
+#       apb_master_drv_proxy_h      apb_master_driver_proxy             -     @721 
+#         rsp_port                  uvm_analysis_port                   -     @736 
+#         seq_item_port             uvm_seq_item_pull_port              -     @728 
+#       apb_master_mon_proxy_h      apb_master_monitor_proxy            -     @853 
+#         apb_master_analysis_port  uvm_analysis_port                   -     @860 
+#       apb_master_seqr_h           apb_master_sequencer                -     @744 
+#         rsp_export                uvm_analysis_export                 -     @751 
+#         seq_item_export           uvm_seq_item_pull_imp               -     @845 
+#         arbitration_queue         array                               0     -    
+#         lock_queue                array                               0     -    
+#         num_last_reqs             integral                            32    'd1  
+#         num_last_rsps             integral                            32    'd1  
+#     i3c_scoreboard_h              i3c_scoreboard                      -     @665 
+#       apb_analysis_fifo           uvm_tlm_analysis_fifo #(T)          -     @891 
+#         analysis_export           uvm_analysis_imp                    -     @930 
+#         get_ap                    uvm_analysis_port                   -     @922 
+#         get_peek_export           uvm_get_peek_imp                    -     @906 
+#         put_ap                    uvm_analysis_port                   -     @914 
+#         put_export                uvm_put_imp                         -     @898 
+#       target_analysis_fifo        uvm_tlm_analysis_fifo #(T)          -     @938 
+#         analysis_export           uvm_analysis_imp                    -     @977 
+#         get_ap                    uvm_analysis_port                   -     @969 
+#         get_peek_export           uvm_get_peek_imp                    -     @953 
+#         put_ap                    uvm_analysis_port                   -     @961 
+#         put_export                uvm_put_imp                         -     @945 
+#     i3c_target_agent_h[0]         i3c_target_agent                    -     @549 
+#       i3c_target_cov_h            i3c_target_coverage                 -     @1138
+#         analysis_imp              uvm_analysis_imp                    -     @1145
+#       i3c_target_drv_proxy_h      i3c_target_driver_proxy             -     @1006
+#         rsp_port                  uvm_analysis_port                   -     @1021
+#         seq_item_port             uvm_seq_item_pull_port              -     @1013
+#       i3c_target_mon_proxy_h      i3c_target_monitor_proxy            -     @987 
+#         target_analysis_port      uvm_analysis_port                   -     @994 
+#       i3c_target_seqr_h           i3c_target_sequencer                -     @1029
+#         rsp_export                uvm_analysis_export                 -     @1036
+#         seq_item_export           uvm_seq_item_pull_imp               -     @1130
+#         arbitration_queue         array                               0     -    
+#         lock_queue                array                               0     -    
+#         num_last_reqs             integral                            32    'd1  
+#         num_last_rsps             integral                            32    'd1  
+#     topPredictor                  uvm_reg_predictor #(apb_master_tx)  -     @673 
+#       bus_in                      uvm_analysis_imp                    -     @680 
+#       reg_ap                      uvm_analysis_port                   -     @688 
+#     top_virtual_seqr_h            top_virtual_sequencer               -     @556 
+#       rsp_export                  uvm_analysis_export                 -     @563 
+#       seq_item_export             uvm_seq_item_pull_imp               -     @657 
+#       arbitration_queue           array                               0     -    
+#       lock_queue                  array                               0     -    
+#       num_last_reqs               integral                            32    'd1  
+#       num_last_rsps               integral                            32    'd1  
+# ---------------------------------------------------------------------------------
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] End Of Elaboration
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(13) @ 0: uvm_test_top [i3c_daa_write_8b_test] Starting DAA sequence
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(161) @ 0: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] Monitor Proxy running
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(162) @ 0: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] Waiting for reset
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(84) @ 0: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Inside the master_monitor_proxy
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(28) @ 0: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [i3c_daa_virtual_seq] Starting DAA sequence
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(44) @ 0: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [CTRL_DEBUG] CTRL value before DAA update = 0x83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(60) @ 0: reporter [apb_master_adapter] The converted reg2bus packet is -------------------------------------------------------------
+# Name                          Type           Size  Value     
+# -------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1188     
+#   pselx                       string         7     SLAVE_0   
+#   paddr                       integral       32    'hc       
+#   pwrite                      string         5     WRITE     
+#   pwdata                      integral       32    'h83070000
+#   transfer_size               string         0     ""        
+#   pstrb                       integral       4     'b1111    
+#   pprot                       string         0     ""        
+#   prdata                      integral       32    'h0       
+#   pslverr                     string         8     NO_ERROR  
+#   no_of_wait_states_detected  integral       32    'd0       
+# -------------------------------------------------------------
+# 
+# 
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(64) @ 30: reporter [APB_MASTER_DRIVER_BFM] SYSTEM RESET DETECTED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(57) @ 30: reporter [APB_MASTER_MONITOR_BFM] system reset detected
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(67) @ 70: reporter [APB_MASTER_DRIVER_BFM] SYSTEM RESET DEACTIVATED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(60) @ 70: reporter [APB_MASTER_MONITOR_BFM] system reset deactivated
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 70: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(100) @ 90: reporter [APB_MASTER_DRIVER_BFM] DROVE THE IDLE STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(103) @ 90: reporter [DEBUG_MSHA] drive_apb_idle state = IDLE and state = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(53) @ 90: reporter [I3C_TARGET_DRIVER_BFM] inside idle state
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(177) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] DAA mode: calling sample_daa()
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_daa_seq.sv(23) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_daa_seq [i3c_target_daa_seq] Before randomization - DAA req created
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_daa_seq.sv(38) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_daa_seq [i3c_target_daa_seq] Randomization SUCCESS - txn_type=DAA PID=0xaabbccddeeff BCR=0x6 DCR=0x0
+# ---------------------------------------------------------------------------------------------------------------------------------
+# Name                           Type           Size  Value                                                                        
+# ---------------------------------------------------------------------------------------------------------------------------------
+# req                            i3c_target_tx  -     @1197                                                                        
+#   begin_time                   time           64    90                                                                           
+#   depth                        int            32    'd2                                                                          
+#   parent sequence (name)       string         14    target_daa_seq                                                               
+#   parent sequence (full name)  string         77    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h.target_daa_seq
+#   sequencer                    string         62    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h               
+#   txn_type                     string         3     DAA                                                                          
+#   pid                          integral       48    'haabbccddeeff                                                               
+#   bcr                          integral       8     'h6                                                                          
+#   dcr                          integral       8     'h0                                                                          
+#   dynamic_address              integral       7     'h0                                                                          
+#   daa_ack                      integral       1     'b0                                                                          
+# ---------------------------------------------------------------------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(61) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Got item from sequencer
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(71) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Transaction type = DAA, calling drive_daa_data
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(150) @ 90: reporter [I3C_TARGET_DRIVER_BFM] DAA transaction started
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(447) @ 90: reporter [I3C_TARGET_DRIVER_BFM] detect_start waiting
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(108) @ 90: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] REQ-MASTER_TX 
+#  -------------------------------------------------------------
+# Name                          Type           Size  Value     
+# -------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1188     
+#   pselx                       string         7     SLAVE_0   
+#   paddr                       integral       32    'hc       
+#   pwrite                      string         5     WRITE     
+#   pwdata                      integral       32    'h83070000
+#   transfer_size               string         0     ""        
+#   pstrb                       integral       4     'b1111    
+#   pprot                       string         0     ""        
+#   prdata                      integral       32    'h0       
+#   pslverr                     string         8     NO_ERROR  
+#   no_of_wait_states_detected  integral       32    'd0       
+# -------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(39) @ 90: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(43) @ 90: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(47) @ 90: reporter [apb_master_seq_item_conv_class] After randomize pselx =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(50) @ 90: reporter [apb_master_seq_item_conv_class] After randomizing pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(53) @ 90: reporter [apb_master_seq_item_conv_class] after writnig addr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(56) @ 90: reporter [apb_master_seq_item_conv_class] after randomizing pwdata =  83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(59) @ 90: reporter [apb_master_seq_item_conv_class] After randomize pstrb =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(63) @ 90: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(66) @ 90: reporter [apb_master_seq_item_conv_class] Before randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(70) @ 90: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(72) @ 90: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 90: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(79) @ 90: reporter [APB_MASTER_DRIVER_BFM] data_packet=
+# '{pwrite:1, pslverr:0, pprot:0, pselx:1, pstrb:15, prdata:0, paddr:12, pwdata:2198274048, no_of_wait_states:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(80) @ 90: reporter [APB_MASTER_DRIVER_BFM] cfg_packet=
+# '{min_address:0, max_address:0, paddr:0, slave_id:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(81) @ 90: reporter [APB_MASTER_DRIVER_BFM] DRIVE TO BFM TASK
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(116) @ 110: reporter [APB_MASTER_DRIVER_BFM] DRIVING THE SETUP STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 110: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(148) @ 130: reporter [APB_MASTER_DRIVER_BFM] INSIDE ACCESS STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(153) @ 130: reporter [DEBUG_NADEEM] pready=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(85) @ 140: reporter [APB_MASTER_MONITOR_BFM] Inside while loop: penable =1, pready=0, pselx=1
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(171) @ 150: reporter [APB_MASTER_DRIVER_BFM] DETECT_WAIT_STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(174) @ 150: reporter [APB_MASTER_DRIVER_BFM] WAIT_STATE_DETECTED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(104) @ 160: reporter [APB_MASTER_MONITOR_BFM] MASTER_SAMPLE_DATA='{pwrite:1, pslverr:0, pprot:0, pselx:1, pstrb:15, prdata:0, paddr:12, pwdata:2198274048, no_of_wait_states:1}
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 160: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 160: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 160: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 160: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 160: reporter [apb_master_seq_item_conv_class] After randomize paddr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 160: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 160: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 160: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 160: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 160: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 160: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(98) @ 160: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Received packet from master monitor bfm: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1180             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(102) @ 160: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Sending packet via analysis_port: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1274             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(110) @ 160: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] Before calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(112) @ 160: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] After calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 160: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1274             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO verilog_src/uvm-1.1d/src/reg/uvm_reg_predictor.svh(221) @ 160: uvm_test_top.i3c_env_h.topPredictor [REG_PREDICT] Observed WRITE transaction to register regmodel.ctrl_inst: value='h83070000 : updated value = 'h83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 160: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(187) @ 160: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] CTRL decoded: addr=0x0 dir=0 len=0 cmd_type=0x3 ccc=0x7
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(149) @ 160: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] DAA transaction detected on APB side
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(179) @ 170: reporter [APB_MASTER_DRIVER_BFM] DATA READY TO TRANSFER
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 170: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 170: reporter [apb_master_seq_item_conv_class] After randomize paddr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 170: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 170: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 170: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 170: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1188             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 170: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1188             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO @ 170: reporter [RegModel] Wrote register via map regmodel.default_map: regmodel.ctrl_inst=0x83070000
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(51) @ 170: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [CTRL_DEBUG] CTRL mirrored value after DAA update = 0x83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(60) @ 170: reporter [apb_master_adapter] The converted reg2bus packet is -----------------------------------------------------------
+# Name                          Type           Size  Value   
+# -----------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1291   
+#   pselx                       string         7     SLAVE_0 
+#   paddr                       integral       32    'hc     
+#   pwrite                      string         4     READ    
+#   pwdata                      integral       32    'h0     
+#   transfer_size               string         0     ""      
+#   pstrb                       integral       4     'b0     
+#   pprot                       string         0     ""      
+#   prdata                      integral       32    'h0     
+#   pslverr                     string         8     NO_ERROR
+#   no_of_wait_states_detected  integral       32    'd0     
+# -----------------------------------------------------------
+# 
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(108) @ 170: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] REQ-MASTER_TX 
+#  -----------------------------------------------------------
+# Name                          Type           Size  Value   
+# -----------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1291   
+#   pselx                       string         7     SLAVE_0 
+#   paddr                       integral       32    'hc     
+#   pwrite                      string         4     READ    
+#   pwdata                      integral       32    'h0     
+#   transfer_size               string         0     ""      
+#   pstrb                       integral       4     'b0     
+#   pprot                       string         0     ""      
+#   prdata                      integral       32    'h0     
+#   pslverr                     string         8     NO_ERROR
+#   no_of_wait_states_detected  integral       32    'd0     
+# -----------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(39) @ 170: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(43) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(47) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pselx =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(50) @ 170: reporter [apb_master_seq_item_conv_class] After randomizing pwrite =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(53) @ 170: reporter [apb_master_seq_item_conv_class] after writnig addr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(56) @ 170: reporter [apb_master_seq_item_conv_class] after randomizing pwdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(59) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pstrb =  0000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(63) @ 170: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(66) @ 170: reporter [apb_master_seq_item_conv_class] Before randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(70) @ 170: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(72) @ 170: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 170: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(79) @ 170: reporter [APB_MASTER_DRIVER_BFM] data_packet=
+# '{pwrite:0, pslverr:0, pprot:0, pselx:1, pstrb:0, prdata:0, paddr:12, pwdata:0, no_of_wait_states:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(80) @ 170: reporter [APB_MASTER_DRIVER_BFM] cfg_packet=
+# '{min_address:0, max_address:0, paddr:0, slave_id:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(81) @ 170: reporter [APB_MASTER_DRIVER_BFM] DRIVE TO BFM TASK
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(116) @ 190: reporter [APB_MASTER_DRIVER_BFM] DRIVING THE SETUP STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 190: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(148) @ 210: reporter [APB_MASTER_DRIVER_BFM] INSIDE ACCESS STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(153) @ 210: reporter [DEBUG_NADEEM] pready=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(85) @ 220: reporter [APB_MASTER_MONITOR_BFM] Inside while loop: penable =1, pready=0, pselx=1
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(171) @ 230: reporter [APB_MASTER_DRIVER_BFM] DETECT_WAIT_STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(174) @ 230: reporter [APB_MASTER_DRIVER_BFM] WAIT_STATE_DETECTED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(104) @ 240: reporter [APB_MASTER_MONITOR_BFM] MASTER_SAMPLE_DATA='{pwrite:0, pslverr:0, pprot:0, pselx:1, pstrb:0, prdata:0, paddr:12, pwdata:2198274048, no_of_wait_states:2}
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 240: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 240: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 240: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 240: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 240: reporter [apb_master_seq_item_conv_class] After randomize paddr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 240: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  83070000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 240: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  0000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 240: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 240: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 240: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 240: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(98) @ 240: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Received packet from master monitor bfm: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1180             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd2               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(102) @ 240: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Sending packet via analysis_port: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1295             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(110) @ 240: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] Before calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(112) @ 240: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] After calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 240: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1295             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO verilog_src/uvm-1.1d/src/reg/uvm_reg_predictor.svh(225) @ 240: uvm_test_top.i3c_env_h.topPredictor [REG_PREDICT] Observed READ transaction to register regmodel.ctrl_inst: value='h0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 240: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(179) @ 250: reporter [APB_MASTER_DRIVER_BFM] DATA READY TO TRANSFER
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 250: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 250: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 250: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 250: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 250: reporter [apb_master_seq_item_conv_class] After randomize paddr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 250: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 250: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  0000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 250: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 250: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 250: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 250: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 250: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1291             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 250: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1291             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO @ 250: reporter [RegModel] Read  register via map regmodel.default_map: regmodel.ctrl_inst=0
+# MONITOR :: checking start at time 280 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(97) @ 280: reporter [I3C_TARGET_MONITOR_BFM] DAA: START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(453) @ 280: reporter [I3C_TARGET_DRIVER_BFM] Start condition detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(154) @ 280: reporter [I3C_TARGET_DRIVER_BFM] DAA: START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(212) @ 280: reporter [I3C_TARGET_DRIVER_BFM] DAA: sampling broadcast 0x7E+W
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 1080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 1240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 1400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 1560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(105) @ 1560: reporter [I3C_TARGET_MONITOR_BFM] DAA: 7E+W sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(229) @ 1560: reporter [I3C_TARGET_DRIVER_BFM] DAA: broadcast addr = 0xfc (expect 0xFC)
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1640: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 1720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1800: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(243) @ 1800: reporter [I3C_TARGET_DRIVER_BFM] DAA: sampling ENTDAA CCC byte
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 1880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 1880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 2040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 2040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 2200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 2200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 2360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 2360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 2520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 2520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 2680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 2680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 2840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 2840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 3000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(122) @ 3000: reporter [I3C_TARGET_MONITOR_BFM] DAA: ENTDAA byte sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(250) @ 3000: reporter [I3C_TARGET_DRIVER_BFM] DAA: CCC byte = 0x7 (expect 0x07)
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3080: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3240: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# MONITOR :: checking start at time 3360 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(136) @ 3360: reporter [I3C_TARGET_MONITOR_BFM] DAA: Repeated START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(273) @ 3360: reporter [I3C_TARGET_DRIVER_BFM] DAA: Repeated START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(166) @ 3360: reporter [I3C_TARGET_DRIVER_BFM] DAA: REPEATED START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(284) @ 3360: reporter [I3C_TARGET_DRIVER_BFM] DAA: sampling broadcast 0x7E+R
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3400: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 3480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 3640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 3800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 3960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 3960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 4120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 4280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 4440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 4600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(145) @ 4600: reporter [I3C_TARGET_MONITOR_BFM] DAA: 7E+R sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(305) @ 4600: reporter [I3C_TARGET_DRIVER_BFM] DAA: broadcast read addr = 0xfd (expect 0xFD)
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4680: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 4760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(157) @ 4760: reporter [I3C_TARGET_MONITOR_BFM] DAA: sampling 64 ARB bits {PID,BCR,DCR}
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4840: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(372) @ 4840: reporter [I3C_TARGET_DRIVER_BFM] DAA: driving PID=aabbccddeeff BCR=0 DCR=c2
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 4920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 4920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5000: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 5080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5160: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 5240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5320: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 5400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5480: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 5560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5640: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 5720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5800: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 5880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 5960: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 6040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6120: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 6200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6280: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 6360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6440: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 6520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6600: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 6680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6760: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 6840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 6920: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7080: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7240: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7320: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7320: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7400: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7560: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7720: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7880: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 7960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 7960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8040: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 8120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8200: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 8280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8360: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 8440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8520: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 8600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8680: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 8760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8840: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 8920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 8920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9000: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 9080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9160: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 9240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9320: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 9400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9480: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 9560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9640: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 9720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9800: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 9880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 9960: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 10040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10120: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 10200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10280: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 10360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10440: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 10520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10600: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 10680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10760: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 10840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 10920: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11080: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11240: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11320: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11320: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11400: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11560: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11720: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11880: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 11960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 11960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12040: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 12120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12200: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 12280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12360: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 12440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12520: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 12600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12600: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12680: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 12760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12840: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 12920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 12920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13000: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 13080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13160: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 13240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13320: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 13400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13480: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 13560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13640: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 13720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13800: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 13880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 13960: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 14040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14120: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 14200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14200: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14280: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 14360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14360: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14440: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 14520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14520: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14600: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 14680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14680: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14760: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 14840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14840: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 14920: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(166) @ 15000: reporter [I3C_TARGET_MONITOR_BFM] DAA: PID=0xaabbccddeeff BCR=0x0 DCR=0xc2
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15000: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15080: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(393) @ 15080: reporter [I3C_TARGET_DRIVER_BFM] DAA: PID+BCR+DCR driven on bus
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(408) @ 15080: reporter [I3C_TARGET_DRIVER_BFM] DAA: sampling dynamic address
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15160: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15320: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15320: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15480: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15640: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15800: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 15960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 15960: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 16120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 16120: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 16280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(174) @ 16280: reporter [I3C_TARGET_MONITOR_BFM] DAA: dynamic_address=0x8 parity=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 16280: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(428) @ 16280: reporter [I3C_TARGET_DRIVER_BFM] DAA: dynamic addr=0x8 parity OK → ACK
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(510) @ 16280: reporter [I3C_TARGET_DRIVER_BFM] driveAddressAck = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 16360: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 16440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(187) @ 16440: reporter [I3C_TARGET_MONITOR_BFM] DAA: assign ACK=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 16440: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(265) @ 16461: reporter [I3C_TARGET_MONITOR_BFM] DAA: Repeated START detected after ASSIGN
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 16520: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# MONITOR :: checking start at time 16660 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(136) @ 16660: reporter [I3C_TARGET_MONITOR_BFM] DAA: Repeated START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 16760: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 16920: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 17080: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 17240: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 17400: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 17560: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 17720: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 17880: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(145) @ 17880: reporter [I3C_TARGET_MONITOR_BFM] DAA: 7E+R sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 18040: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(150) @ 18040: reporter [I3C_TARGET_MONITOR_BFM] DAA: NACK on 7E+R - no more devices
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(613) @ 19661: reporter [I3C_TARGET_DRIVER_BFM] Stop condition detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(196) @ 19661: reporter [I3C_TARGET_DRIVER_BFM] DAA: STOP detected - DAA complete
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(95) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] DAA complete: PID=0xaabbccddeeff BCR=0x0 DCR=0xc2 DynAddr=0x8 ACK=0
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(113) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] item_done called
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(200) @ 19661: reporter [I3C_TARGET_MONITOR_BFM] DAA: complete, 1 device(s) assigned
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(184) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] DAA device[0] captured:
+# ------------------------------------------------------
+# Name               Type           Size  Value         
+# ------------------------------------------------------
+# daa_txn            i3c_target_tx  -     @1303         
+#   txn_type         string         3     DAA           
+#   pid              integral       48    'haabbccddeeff
+#   bcr              integral       8     'h0           
+#   dcr              integral       8     'hc2          
+#   dynamic_address  integral       7     'h8           
+#   daa_ack          integral       1     'b0           
+# ------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(301) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [DEBUG_m_coverage] I3C_target_TX {daa_txn} 1303 1 1315 @uvm_status_container@1 @uvm_object_string_pool__1@92 @uvm_event@35 @uvm_event@36 -1 18446744073709551615 18446744073709551615 18446744073709551615 null 0 0 0 null -1 0 1 null null 0 {} null null 0 0 {} ACK {} WRITE 0 {} {} 0 DAA 187723572702975 0 194 8 0 {i3c_target_tx}
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(195) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] DAA complete - switching to SDR monitoring mode
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_daa_seq.sv(44) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_daa_seq [i3c_target_daa_seq] finish_item returned - DAA item sent to driver
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(232) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA] DAA target pkt[1]:
+# ------------------------------------------------------
+# Name               Type           Size  Value         
+# ------------------------------------------------------
+# daa_txn            i3c_target_tx  -     @1303         
+#   txn_type         string         3     DAA           
+#   pid              integral       48    'haabbccddeeff
+#   bcr              integral       8     'h0           
+#   dcr              integral       8     'hc2          
+#   dynamic_address  integral       7     'h8           
+#   daa_ack          integral       1     'b0           
+# ------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(252) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_CTRL_ADDR] CTRL address field = 0x0 (DAA uses broadcast implicitly)
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(259) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_CTRL_CCC] CTRL CCC = 0x07 (ENTDAA) ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(268) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_CTRL_CMD] CTRL cmd_type = 3 (DAA) ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(294) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_PID] PID 0xaabbccddeeff matched expected device[0] ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(308) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_BCR] BCR 0x0 ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(320) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_DCR] DCR 0xc2 ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(337) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_DYNADDR] Dynamic address 0x8 ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(351) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_PARITY] Parity OK for addr 0x8 (daa_ack=ACK) ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(367) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_BCR_ROLE] BCR[7]=0 (target role) ✓
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(221) @ 19690: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] SDR txn: converted cfg struct
+# '{dataTransferDirection:MSB_FIRST, operation:0, clockRateDividerValue:0, targetAddress:104, defaultReadData:255, pid:187723572702975, bcr:0, dcr:194, daa_accept_address:1}
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(59) @ 20250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [i3c_daa_virtual_seq] DAA completed ��� target assigned dynamic address 0x08
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(21) @ 20250: uvm_test_top [i3c_daa_write_8b_test] DAA done - updating target address to dynamic 0x08
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(28) @ 20250: uvm_test_top [i3c_daa_write_8b_test] Starting SDR WRITE with dynamic address
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(39) @ 20250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [i3c_sdr_write_virtual_seq] Starting SDR WRITE test
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(60) @ 20250: reporter [apb_master_adapter] The converted reg2bus packet is -----------------------------------------------------------
+# Name                          Type           Size  Value   
+# -----------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1329   
+#   pselx                       string         7     SLAVE_0 
+#   paddr                       integral       32    'h30    
+#   pwrite                      string         5     WRITE   
+#   pwdata                      integral       32    'ha5    
+#   transfer_size               string         0     ""      
+#   pstrb                       integral       4     'b1111  
+#   pprot                       string         0     ""      
+#   prdata                      integral       32    'h0     
+#   pslverr                     string         8     NO_ERROR
+#   no_of_wait_states_detected  integral       32    'd0     
+# -----------------------------------------------------------
+# 
+# 
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(46) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] Before randomization - req created
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(64) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] Randomization SUCCESS - after overrides
+# -----------------------------------------------------------------------------------------------------------------------------------
+# Name                           Type           Size  Value                                                                          
+# -----------------------------------------------------------------------------------------------------------------------------------
+# req                            i3c_target_tx  -     @1337                                                                          
+#   begin_time                   time           64    20250                                                                          
+#   depth                        int            32    'd2                                                                            
+#   parent sequence (name)       string         16    target_seq_write                                                               
+#   parent sequence (full name)  string         79    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h.target_seq_write
+#   sequencer                    string         62    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h                 
+#   txn_type                     string         3     SDR                                                                            
+#   targetAddress                integral       7     'h68                                                                           
+#   targetAddressStatus          string         3     ACK                                                                            
+#   operation                    string         5     WRITE                                                                          
+#   writeDataStatus[0]           string         3     ACK                                                                            
+#   writeDataStatus[1]           string         3     ACK                                                                            
+#   writeDataStatus[2]           string         3     ACK                                                                            
+#   writeDataStatus[3]           string         3     ACK                                                                            
+#   writeDataStatus[4]           string         3     ACK                                                                            
+#   writeDataStatus[5]           string         3     ACK                                                                            
+#   writeDataStatus[6]           string         3     ACK                                                                            
+#   writeDataStatus[7]           string         3     ACK                                                                            
+#   writeDataStatus[8]           string         3     ACK                                                                            
+#   writeDataStatus[9]           string         3     ACK                                                                            
+#   writeDataStatus[10]          string         3     ACK                                                                            
+#   writeDataStatus[11]          string         3     ACK                                                                            
+#   writeDataStatus[12]          string         3     ACK                                                                            
+#   writeDataStatus[13]          string         3     ACK                                                                            
+#   writeDataStatus[14]          string         3     ACK                                                                            
+#   writeDataStatus[15]          string         3     ACK                                                                            
+#   writeDataStatus[16]          string         3     ACK                                                                            
+# -----------------------------------------------------------------------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(61) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Got item from sequencer
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(104) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Transaction type = SDR, calling drive_data
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(68) @ 20250: reporter [I3C_TARGET_DRIVER_BFM] target txn started
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(447) @ 20250: reporter [I3C_TARGET_DRIVER_BFM] detect_start waiting
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(108) @ 20250: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] REQ-MASTER_TX 
+#  -----------------------------------------------------------
+# Name                          Type           Size  Value   
+# -----------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1329   
+#   pselx                       string         7     SLAVE_0 
+#   paddr                       integral       32    'h30    
+#   pwrite                      string         5     WRITE   
+#   pwdata                      integral       32    'ha5    
+#   transfer_size               string         0     ""      
+#   pstrb                       integral       4     'b1111  
+#   pprot                       string         0     ""      
+#   prdata                      integral       32    'h0     
+#   pslverr                     string         8     NO_ERROR
+#   no_of_wait_states_detected  integral       32    'd0     
+# -----------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(39) @ 20250: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(43) @ 20250: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(47) @ 20250: reporter [apb_master_seq_item_conv_class] After randomize pselx =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(50) @ 20250: reporter [apb_master_seq_item_conv_class] After randomizing pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(53) @ 20250: reporter [apb_master_seq_item_conv_class] after writnig addr =  30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(56) @ 20250: reporter [apb_master_seq_item_conv_class] after randomizing pwdata =  a5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(59) @ 20250: reporter [apb_master_seq_item_conv_class] After randomize pstrb =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(63) @ 20250: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(66) @ 20250: reporter [apb_master_seq_item_conv_class] Before randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(70) @ 20250: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(72) @ 20250: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 20250: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(79) @ 20250: reporter [APB_MASTER_DRIVER_BFM] data_packet=
+# '{pwrite:1, pslverr:0, pprot:0, pselx:1, pstrb:15, prdata:0, paddr:48, pwdata:165, no_of_wait_states:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(80) @ 20250: reporter [APB_MASTER_DRIVER_BFM] cfg_packet=
+# '{min_address:0, max_address:0, paddr:0, slave_id:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(81) @ 20250: reporter [APB_MASTER_DRIVER_BFM] DRIVE TO BFM TASK
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(116) @ 20270: reporter [APB_MASTER_DRIVER_BFM] DRIVING THE SETUP STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 20270: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(148) @ 20290: reporter [APB_MASTER_DRIVER_BFM] INSIDE ACCESS STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(153) @ 20290: reporter [DEBUG_NADEEM] pready=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(85) @ 20300: reporter [APB_MASTER_MONITOR_BFM] Inside while loop: penable =1, pready=0, pselx=1
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(171) @ 20310: reporter [APB_MASTER_DRIVER_BFM] DETECT_WAIT_STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(174) @ 20310: reporter [APB_MASTER_DRIVER_BFM] WAIT_STATE_DETECTED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(104) @ 20320: reporter [APB_MASTER_MONITOR_BFM] MASTER_SAMPLE_DATA='{pwrite:1, pslverr:0, pprot:0, pselx:1, pstrb:15, prdata:0, paddr:48, pwdata:165, no_of_wait_states:3}
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 20320: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize paddr =  30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  a5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 20320: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            3
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 20320: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(98) @ 20320: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Received packet from master monitor bfm: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1180             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd3               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(102) @ 20320: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Sending packet via analysis_port: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1341             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(110) @ 20320: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] Before calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(112) @ 20320: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] After calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 20320: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1341             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO verilog_src/uvm-1.1d/src/reg/uvm_reg_predictor.svh(221) @ 20320: uvm_test_top.i3c_env_h.topPredictor [REG_PREDICT] Observed WRITE transaction to register regmodel.wdatab_inst: value='ha5 : updated value = 'ha5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 20320: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(176) @ 20320: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] WDATAB collected = 0xa5
+# [20330] REG_WRITE: WDATAB <= a5
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(179) @ 20330: reporter [APB_MASTER_DRIVER_BFM] DATA READY TO TRANSFER
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 20330: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize paddr =  30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  a5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 20330: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 20330: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1329             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 20330: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1329             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO @ 20330: reporter [RegModel] Wrote register via map regmodel.default_map: regmodel.wdatab_inst=0xa5
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(63) @ 20330: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [WDATAB_DEBUG] WDATAB mirrored value = a5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(60) @ 20330: reporter [apb_master_adapter] The converted reg2bus packet is -----------------------------------------------------------
+# Name                          Type           Size  Value   
+# -----------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1357   
+#   pselx                       string         7     SLAVE_0 
+#   paddr                       integral       32    'h30    
+#   pwrite                      string         4     READ    
+#   pwdata                      integral       32    'h0     
+#   transfer_size               string         0     ""      
+#   pstrb                       integral       4     'b0     
+#   pprot                       string         0     ""      
+#   prdata                      integral       32    'h0     
+#   pslverr                     string         8     NO_ERROR
+#   no_of_wait_states_detected  integral       32    'd0     
+# -----------------------------------------------------------
+# 
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(108) @ 20330: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] REQ-MASTER_TX 
+#  -----------------------------------------------------------
+# Name                          Type           Size  Value   
+# -----------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1357   
+#   pselx                       string         7     SLAVE_0 
+#   paddr                       integral       32    'h30    
+#   pwrite                      string         4     READ    
+#   pwdata                      integral       32    'h0     
+#   transfer_size               string         0     ""      
+#   pstrb                       integral       4     'b0     
+#   pprot                       string         0     ""      
+#   prdata                      integral       32    'h0     
+#   pslverr                     string         8     NO_ERROR
+#   no_of_wait_states_detected  integral       32    'd0     
+# -----------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(39) @ 20330: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(43) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(47) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pselx =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(50) @ 20330: reporter [apb_master_seq_item_conv_class] After randomizing pwrite =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(53) @ 20330: reporter [apb_master_seq_item_conv_class] after writnig addr =  30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(56) @ 20330: reporter [apb_master_seq_item_conv_class] after randomizing pwdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(59) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pstrb =  0000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(63) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(66) @ 20330: reporter [apb_master_seq_item_conv_class] Before randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(70) @ 20330: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(72) @ 20330: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 20330: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(79) @ 20330: reporter [APB_MASTER_DRIVER_BFM] data_packet=
+# '{pwrite:0, pslverr:0, pprot:0, pselx:1, pstrb:0, prdata:0, paddr:48, pwdata:0, no_of_wait_states:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(80) @ 20330: reporter [APB_MASTER_DRIVER_BFM] cfg_packet=
+# '{min_address:0, max_address:0, paddr:0, slave_id:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(81) @ 20330: reporter [APB_MASTER_DRIVER_BFM] DRIVE TO BFM TASK
+# [20350] FIFO WRITE: din=a5 addr=0 wr_ptr=0
+# [20350] STATUS: wr_en=1 rd_en=0 full=0 empty=1 wr_ptr=0 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(116) @ 20350: reporter [APB_MASTER_DRIVER_BFM] DRIVING THE SETUP STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 20350: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(148) @ 20370: reporter [APB_MASTER_DRIVER_BFM] INSIDE ACCESS STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(153) @ 20370: reporter [DEBUG_NADEEM] pready=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(85) @ 20380: reporter [APB_MASTER_MONITOR_BFM] Inside while loop: penable =1, pready=0, pselx=1
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(171) @ 20390: reporter [APB_MASTER_DRIVER_BFM] DETECT_WAIT_STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(174) @ 20390: reporter [APB_MASTER_DRIVER_BFM] WAIT_STATE_DETECTED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(104) @ 20400: reporter [APB_MASTER_MONITOR_BFM] MASTER_SAMPLE_DATA='{pwrite:0, pslverr:0, pprot:0, pselx:1, pstrb:0, prdata:0, paddr:48, pwdata:165, no_of_wait_states:4}
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 20400: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize paddr =  30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  a5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  0000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 20400: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            4
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 20400: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(98) @ 20400: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Received packet from master monitor bfm: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1180             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd4               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(102) @ 20400: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Sending packet via analysis_port: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1361             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(110) @ 20400: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] Before calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(112) @ 20400: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] After calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 20400: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1361             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'ha5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO verilog_src/uvm-1.1d/src/reg/uvm_reg_predictor.svh(225) @ 20400: uvm_test_top.i3c_env_h.topPredictor [REG_PREDICT] Observed READ transaction to register regmodel.wdatab_inst: value='h0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 20400: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# [20410] REG_INTERFACE rd: WDATAB=a5 assigning r_data=a5
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(179) @ 20410: reporter [APB_MASTER_DRIVER_BFM] DATA READY TO TRANSFER
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 20410: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize paddr =  30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  0000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 20410: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 20410: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1357             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 20410: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1357             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO @ 20410: reporter [RegModel] Read  register via map regmodel.default_map: regmodel.wdatab_inst=0
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(80) @ 20410: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [CTRL_DEBUG] CTRL value before update = 80000088
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(60) @ 20410: reporter [apb_master_adapter] The converted reg2bus packet is -------------------------------------------------------------
+# Name                          Type           Size  Value     
+# -------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1373     
+#   pselx                       string         7     SLAVE_0   
+#   paddr                       integral       32    'hc       
+#   pwrite                      string         5     WRITE     
+#   pwdata                      integral       32    'h80000088
+#   transfer_size               string         0     ""        
+#   pstrb                       integral       4     'b1111    
+#   pprot                       string         0     ""        
+#   prdata                      integral       32    'h0       
+#   pslverr                     string         8     NO_ERROR  
+#   no_of_wait_states_detected  integral       32    'd0       
+# -------------------------------------------------------------
+# 
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(108) @ 20410: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] REQ-MASTER_TX 
+#  -------------------------------------------------------------
+# Name                          Type           Size  Value     
+# -------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1373     
+#   pselx                       string         7     SLAVE_0   
+#   paddr                       integral       32    'hc       
+#   pwrite                      string         5     WRITE     
+#   pwdata                      integral       32    'h80000088
+#   transfer_size               string         0     ""        
+#   pstrb                       integral       4     'b1111    
+#   pprot                       string         0     ""        
+#   prdata                      integral       32    'h0       
+#   pslverr                     string         8     NO_ERROR  
+#   no_of_wait_states_detected  integral       32    'd0       
+# -------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(39) @ 20410: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(43) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(47) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pselx =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(50) @ 20410: reporter [apb_master_seq_item_conv_class] After randomizing pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(53) @ 20410: reporter [apb_master_seq_item_conv_class] after writnig addr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(56) @ 20410: reporter [apb_master_seq_item_conv_class] after randomizing pwdata =  80000088
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(59) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pstrb =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(63) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(66) @ 20410: reporter [apb_master_seq_item_conv_class] Before randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(70) @ 20410: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(72) @ 20410: reporter [apb_master_seq_item_conv_class] -------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 20410: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(79) @ 20410: reporter [APB_MASTER_DRIVER_BFM] data_packet=
+# '{pwrite:1, pslverr:0, pprot:0, pselx:1, pstrb:15, prdata:0, paddr:12, pwdata:2147483784, no_of_wait_states:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(80) @ 20410: reporter [APB_MASTER_DRIVER_BFM] cfg_packet=
+# '{min_address:0, max_address:0, paddr:0, slave_id:0}
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(81) @ 20410: reporter [APB_MASTER_DRIVER_BFM] DRIVE TO BFM TASK
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(116) @ 20430: reporter [APB_MASTER_DRIVER_BFM] DRIVING THE SETUP STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 20430: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(148) @ 20450: reporter [APB_MASTER_DRIVER_BFM] INSIDE ACCESS STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(153) @ 20450: reporter [DEBUG_NADEEM] pready=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(85) @ 20460: reporter [APB_MASTER_MONITOR_BFM] Inside while loop: penable =1, pready=0, pselx=1
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(171) @ 20470: reporter [APB_MASTER_DRIVER_BFM] DETECT_WAIT_STATE
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(174) @ 20470: reporter [APB_MASTER_DRIVER_BFM] WAIT_STATE_DETECTED
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(104) @ 20480: reporter [APB_MASTER_MONITOR_BFM] MASTER_SAMPLE_DATA='{pwrite:1, pslverr:0, pprot:0, pselx:1, pstrb:15, prdata:0, paddr:12, pwdata:2147483784, no_of_wait_states:5}
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 20480: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize paddr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  80000088
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 20480: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 20480: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(98) @ 20480: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Received packet from master monitor bfm: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1180             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h80000088        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd5               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(102) @ 20480: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Sending packet via analysis_port: , 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1377             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h80000088        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(110) @ 20480: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] Before calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(112) @ 20480: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] After calling SAMPLE METHOD
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 20480: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# master_packet                 apb_master_tx  -     @1377             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h80000088        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd0               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO verilog_src/uvm-1.1d/src/reg/uvm_reg_predictor.svh(221) @ 20480: uvm_test_top.i3c_env_h.topPredictor [REG_PREDICT] Observed WRITE transaction to register regmodel.ctrl_inst: value='h80000088 : updated value = 'h80000088
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_cfg_converter.sv(38) @ 20480: reporter [apb_master_cfg_converter] after randomizing addr = 
+#  0
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(187) @ 20480: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] CTRL decoded: addr=0x8 dir=0 len=1 cmd_type=0x0 ccc=0x0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(179) @ 20490: reporter [APB_MASTER_DRIVER_BFM] DATA READY TO TRANSFER
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(85) @ 20490: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(88) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize pprot =  000
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(91) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize pselx =  0000000000000001
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(94) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize pwrite =  1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(97) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize paddr =  c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(100) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize pwdata =  80000088
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(103) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize pwdta =  1111
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(106) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize pslverr =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(109) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize prdata =  0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(113) @ 20490: reporter [apb_master_seq_item_conv_class] After randomize no_of_wait_states =            1
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_seq_item_converter.sv(115) @ 20490: reporter [apb_master_seq_item_conv] -------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 20490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1373             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h80000088        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_adapter.sv(95) @ 20490: reporter [apb_master_adapter] The converted bus2reg packet is ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1373             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h80000088        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# 
+# UVM_INFO @ 20490: reporter [RegModel] Wrote register via map regmodel.default_map: regmodel.ctrl_inst=0x80000088
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(88) @ 20490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [CTRL_DEBUG] CTRL mirrored value after update = 80000088
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(453) @ 20580: reporter [I3C_TARGET_DRIVER_BFM] Start condition detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(462) @ 20580: reporter [I3C_TARGET_DRIVER_BFM] sample_target_address started
+# MONITOR :: checking start at time 20580 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 20620: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 20700: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 20700: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 6 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 20700: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 20860: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 20860: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 5 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 20860: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21020: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 21020: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 4 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21020: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21180: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 21180: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 3 = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21180: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21340: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 21340: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 2 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21340: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21500: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 21500: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 1 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21500: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21660: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(472) @ 21660: reporter [I3C_TARGET_DRIVER_BFM] sampled bit 0 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(477) @ 21660: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: local_addr = 0x8
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(482) @ 21660: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: cfg target_addr = 0x8
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(489) @ 21660: reporter [I3C_TARGET_DRIVER_BFM] address match ACK
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21660: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21820: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(502) @ 21820: reporter [I3C_TARGET_DRIVER_BFM] operation = WRITE
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(510) @ 21820: reporter [I3C_TARGET_DRIVER_BFM] driveAddressAck = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21820: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21900: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 21980: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 21980: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(369) @ 21980: reporter [DEBUG_TARGET_MONITOR_BFM] dir MSB_FIRST 
+# [22050] FIFO READ : dout=a5 addr=0 rd_ptr=0
+# [22050] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=1 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22060: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(75) @ 22060: reporter [I3C_TARGET_DRIVER_BFM] targetAddressStatus is ACK
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(90) @ 22060: reporter [I3C_TARGET_DRIVER_BFM] sampleWriteDataAndDriveACK started
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(101) @ 22060: reporter [I3C_TARGET_DRIVER_BFM] sampleWriteDataAndDriveACK done
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(528) @ 22060: reporter [DEBUG_TARGET_DRIVER_BFM] dir MSB_FIRST
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22140: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 22140: reporter [I3C_TARGET_DRIVER_BFM] write data bit 7 = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 22140: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 22140: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=7 sda_i=1 wdata[bit_no]=1
+#  wdata=10000000
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22300: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 22300: reporter [I3C_TARGET_DRIVER_BFM] write data bit 6 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 22300: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 22300: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=6 sda_i=0 wdata[bit_no]=0
+#  wdata=10000000
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22460: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 22460: reporter [I3C_TARGET_DRIVER_BFM] write data bit 5 = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 22460: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 22460: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=5 sda_i=1 wdata[bit_no]=1
+#  wdata=10100000
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22620: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 22620: reporter [I3C_TARGET_DRIVER_BFM] write data bit 4 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 22620: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 22620: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=4 sda_i=0 wdata[bit_no]=0
+#  wdata=10100000
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22780: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 22780: reporter [I3C_TARGET_DRIVER_BFM] write data bit 3 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 22780: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 22780: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=3 sda_i=0 wdata[bit_no]=0
+#  wdata=10100000
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 22940: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 22940: reporter [I3C_TARGET_DRIVER_BFM] write data bit 2 = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 22940: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 22940: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=2 sda_i=1 wdata[bit_no]=1
+#  wdata=10100100
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 23100: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 23100: reporter [I3C_TARGET_DRIVER_BFM] write data bit 1 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 23100: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 23100: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=1 sda_i=0 wdata[bit_no]=0
+#  wdata=10100100
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 23260: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 23260: reporter [I3C_TARGET_DRIVER_BFM] write data bit 0 = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(541) @ 23260: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xa5
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(545) @ 23260: reporter [DEBUG_READ] write fifo size = 1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(551) @ 23260: reporter [I3C_TARGET_DRIVER_BFM] driveWdataAck = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 23260: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 23260: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=0 sda_i=1 wdata[bit_no]=1
+#  wdata=10100101
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(381) @ 23260: reporter [DEBUG_TARGET_MONITOR_BFM]  i=0 wdata=0xa5
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 23340: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 23420: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 23420: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(369) @ 23420: reporter [DEBUG_TARGET_MONITOR_BFM] dir MSB_FIRST 
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 23500: reporter [TARGET_DRIVER_BFM] scl NEGEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(528) @ 23500: reporter [DEBUG_TARGET_DRIVER_BFM] dir MSB_FIRST
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(635) @ 23580: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(535) @ 23580: reporter [I3C_TARGET_DRIVER_BFM] write data bit 7 = 0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(455) @ 23580: reporter [TARGET_DRIVER_BFM] scl POSEDGE detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(376) @ 23580: reporter [DEBUG_MSHA_MONITOR_BFM]  bit_no=7 sda_i=0 wdata[bit_no]=0
+#  wdata=100101
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(425) @ 23601: reporter [I3C_TARGET_MONITOR_BFM] Stop condition is detected
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(231) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] SDR packet captured:
+# -------------------------------------------------
+# Name                   Type           Size  Value
+# -------------------------------------------------
+# i3c_target_tx          i3c_target_tx  -     @1389
+#   txn_type             string         3     SDR  
+#   targetAddress        integral       7     'h8  
+#   targetAddressStatus  string         3     ACK  
+#   operation            string         5     WRITE
+#   writeData[0]         integral       8     'ha5 
+#   writeDataStatus[0]   string         3     ACK  
+# -------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(301) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [DEBUG_m_coverage] I3C_target_TX {i3c_target_tx} 1389 1 1393 @uvm_status_container@1 @uvm_object_string_pool__1@113 @uvm_event@79 @uvm_event@80 -1 18446744073709551615 18446744073709551615 18446744073709551615 null 0 0 0 null -1 0 1 null null 0 {} null null 0 0 {0} ACK {ACK} WRITE 8 {165} {ACK} 0 SDR 0 0 0 0 0 {i3c_target_tx}
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(600) @ 23601: reporter [I3C_TARGET_DRIVER_BFM] Stop condition detected
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(113) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] item_done called
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(382) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] Target pkt:
+# -------------------------------------------------
+# Name                   Type           Size  Value
+# -------------------------------------------------
+# i3c_target_tx          i3c_target_tx  -     @1389
+#   txn_type             string         3     SDR  
+#   targetAddress        integral       7     'h8  
+#   targetAddressStatus  string         3     ACK  
+#   operation            string         5     WRITE
+#   writeData[0]         integral       8     'ha5 
+#   writeDataStatus[0]   string         3     ACK  
+# -------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(387) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_ADDR_MATCH] Address match: 0x8
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(400) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_OP_MATCH] Operation match: WRITE
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(412) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] Write: APB sent 1 bytes, CTRL length=1, target received 1 bytes
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(424) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[0]: expected 0xa5 got 0xa5
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(69) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] finish_item returned - item sent to driver
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(221) @ 23610: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] SDR txn: converted cfg struct
+# '{dataTransferDirection:MSB_FIRST, operation:0, clockRateDividerValue:0, targetAddress:8, defaultReadData:255, pid:187723572702975, bcr:0, dcr:194, daa_accept_address:1}
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(95) @ 70490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [i3c_sdr_write_virtual_seq] SDR WRITE issued and registers verified
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 123490: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(516) @ 123490: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_SUMMARY] 
+# ============= SCOREBOARD SUMMARY =============
+#   APB transactions seen      : 5
+#   I3C target transactions    : 2
+#   -- SDR --
+#   Write byte pass / fail     : 1 / 0
+#   Read  byte pass / fail     : 0 / 0
+#   -- DAA --
+#   Devices seen               : 1
+#   PID/BCR/DCR pass / fail    : 3 / 0
+#   Dyn address pass / fail    : 1 / 0
+#   Parity / ACK pass / fail   : 1 / 0
+# ==============================================
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(121) @ 123490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] APB Master Agent Coverage = 26.04 %
+# 
+# --------------------------------------
+# target COVERAGE
+# --------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(337) @ 123490: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent SDR Coverage = 35.19 %
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(341) @ 123490: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent DAA Coverage = 44.23 %
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(346) @ 123490: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent Total Coverage = 39.71 %
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :  775
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [APB_MASTER_DRIVER_BFM]    44
+# [APB_MASTER_MONITOR_BFM]    13
+# [CTRL_DEBUG]     4
+# [DEBUG_MSHA]     6
+# [DEBUG_MSHA_MONITOR_BFM]     9
+# [DEBUG_NADEEM]     5
+# [DEBUG_READ]     1
+# [DEBUG_TARGET_DRIVER_BFM]     2
+# [DEBUG_TARGET_MONITOR_BFM]     3
+# [DEBUG_m_coverage]     2
+# [I3C_TARGET_DRIVER_BFM]    51
+# [I3C_TARGET_MONITOR_BFM]    15
+# [Questa UVM]     3
+# [REG_PREDICT]     5
+# [RNTST]     1
+# [RegModel]     5
+# [SB]     6
+# [SB_ADDR_MATCH]     1
+# [SB_DAA]     1
+# [SB_DAA_BCR]     1
+# [SB_DAA_BCR_ROLE]     1
+# [SB_DAA_CTRL_ADDR]     1
+# [SB_DAA_CTRL_CCC]     1
+# [SB_DAA_CTRL_CMD]     1
+# [SB_DAA_DCR]     1
+# [SB_DAA_DYNADDR]     1
+# [SB_DAA_INIT]     1
+# [SB_DAA_PARITY]     1
+# [SB_DAA_PID]     1
+# [SB_OP_MATCH]     1
+# [SB_SUMMARY]     1
+# [SB_WDATA_MATCH]     1
+# [TARGET_DRIVER_BFM]   324
+# [TEST_DONE]     1
+# [TGT_DRV_PROXY]     7
+# [UVMTOP]     1
+# [WDATAB_DEBUG]     1
+# [apb master agent bfm]     1
+# [apb_master_adapter]    15
+# [apb_master_cfg_converter]    11
+# [apb_master_coverage]    11
+# [apb_master_driver_proxy]    10
+# [apb_master_monitor_proxy]    11
+# [apb_master_seq_item_conv]    20
+# [apb_master_seq_item_conv_class]   145
+# [i3c_daa_virtual_seq]     2
+# [i3c_daa_write_8b_test]     6
+# [i3c_sdr_write_virtual_seq]     2
+# [i3c_target_coverage]     3
+# [i3c_target_daa_seq]     3
+# [i3c_target_monitor_proxy]     8
+# [i3c_target_writeOperationWith8bitsData_seq]     3
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 123490 ns  Iteration: 53  Instance: /hvl_top
+# Saving coverage database on exit...
+# End time: 12:42:21 on Apr 27,2026, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 7
