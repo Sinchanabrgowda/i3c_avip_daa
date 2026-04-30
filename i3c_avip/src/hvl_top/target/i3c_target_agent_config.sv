@@ -18,7 +18,7 @@ class i3c_target_agent_config extends uvm_object;
 
   int unsigned                       target_id            = 0;
 
- bit  has_daa               = 1;
+ bit  has_daa               = 0;
  
   // NEW: DAA behavioural knobs
   // Set to 0 to make the target NACK the assigned dynamic address.

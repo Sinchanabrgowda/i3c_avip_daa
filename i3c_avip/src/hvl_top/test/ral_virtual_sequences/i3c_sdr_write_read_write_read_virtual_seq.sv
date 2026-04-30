@@ -45,7 +45,7 @@ class i3c_sdr_write_read_write_read_virtual_seq extends top_virtual_base_seq;
     i3c_env_cfg_h.regBlockHandle.wdatab_inst.mirror(status, UVM_NO_CHECK);
 
 
-    i3c_env_cfg_h.regBlockHandle.ctrl_inst.address.set(TARGET0_ADDRESS);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.address.set(i3c_env_cfg_h.i3c_target_agent_cfg_h[0].targetAddress);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.length.set(8'd1);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.direction.set(1'b0);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.cmd_type.set(2'b00);

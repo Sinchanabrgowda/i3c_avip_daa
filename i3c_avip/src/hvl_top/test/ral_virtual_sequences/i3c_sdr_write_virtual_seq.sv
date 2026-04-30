@@ -71,6 +71,7 @@ if(i3c_env_cfg_h.regBlockHandle.wdatab_inst == null)
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.length.set(8'd1);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.direction.set(1'b0);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.cmd_type.set(2'b00);
+//i3c_env_cfg_h.regBlockHandle.ctrl_inst.ccc.set(8'h07); 
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.start.set(1'b1);
 
     ctrl_val = i3c_env_cfg_h.regBlockHandle.ctrl_inst.get();

@@ -282,5 +282,11 @@ i3c_scl_gen x9 (
   .scl_oe     (scl_oe) 
 );
 
+always @(posedge clk) begin
+  if(cmd_start)
+    $display("RTL @ %0t: cmd_start after DAA", $time);
+  if(start_sdr)  
+    $display("RTL @ %0t: start_sdr after DAA", $time);
+end
 endmodule
 

@@ -93,6 +93,12 @@ task i3c_target_driver_proxy::run_phase(uvm_phase phase);
       `uvm_info("TGT_DRV_PROXY", $sformatf(
         "DAA complete: PID=0x%0h BCR=0x%0h DCR=0x%0h DynAddr=0x%0h ACK=%0b",
         pid_out, bcr_out, dcr_out, dyn_addr_out, daa_ack_out), UVM_NONE)
+if(daa_ack_out == ACK) begin
+  i3c_target_agent_cfg_h.targetAddress = dyn_addr_out;
+  `uvm_info("TGT_DRV_PROXY",
+    $sformatf("DAA: targetAddress updated to dynamic 0x%0h",
+              dyn_addr_out), UVM_LOW)
+end
 
       // Convert struct back to class
       i3c_target_seq_item_converter::to_class(struct_packet, req);

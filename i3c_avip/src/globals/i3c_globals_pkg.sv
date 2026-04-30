@@ -54,6 +54,8 @@ package i3c_globals_pkg;
 
   // CTRL register cmd_type encoding for DAA
   parameter bit [1:0] CMD_TYPE_DAA        = 2'd3;
+parameter bit [1:0] CMD_TYPE_SDR = 2'b00;
+parameter bit [1:0] CMD_TYPE_CCC = 2'b10;
 
   // ── Existing enums (unchanged) ───────────────────────────
   typedef enum bit {

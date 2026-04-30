@@ -46,8 +46,10 @@ task i3c_target_writeOperationWith8bitsData_seq::body();
     `uvm_info(get_type_name(), "Before randomization - req created", UVM_NONE)
 
     // targetAddress is NOT rand - assign directly before randomize
-    req.targetAddress = 7'h68;
-    req.operation     = WRITE;
+    //req.targetAddress = 7'h68;
+req.targetAddress = p_sequencer.i3c_target_agent_cfg_h.targetAddress;
+
+req.operation     = WRITE;
 
     if(!req.randomize() with {
         targetAddressStatus == ACK;   // override the 60% NACK bias

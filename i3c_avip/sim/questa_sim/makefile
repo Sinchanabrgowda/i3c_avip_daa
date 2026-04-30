@@ -183,9 +183,10 @@ merge_cov_report:
 	rm -rf merged_coverage.ucdb merged_cov_html_report
 	# Merging all the coverage
 	vcover merge merged_coverage.ucdb -64 */*.ucdb  
-	#vcover merge mem_cover mem_cov1 mem_cov2 mem_cov3 mem_cov4 mem_cov5 mem_cov6 mem_cov7 mem_cov8
+	vsim -c -do exclude_cov.do	
+#	vcover merge mem_cover mem_cov1 mem_cov2 mem_cov3 mem_cov4 mem_cov5 mem_cov6 mem_cov7 mem_cov8	
 	vcover report -html merged_coverage.ucdb -htmldir ./merged_cov_html_report -details
-
+        
 	echo "";
 	echo "-----------------------------------------------------------------";
 	echo "Coverage report: firefox merged_cov_html_report/index.html &"

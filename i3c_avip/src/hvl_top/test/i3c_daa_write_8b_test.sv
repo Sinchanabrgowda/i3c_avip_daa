@@ -8,6 +8,15 @@ class i3c_daa_write_8b_test extends i3c_base_test;
     super.new(name, parent);
   endfunction
 
+
+ function void setup_target_agent_cfg();
+    super.setup_target_agent_cfg();
+
+    foreach(i3c_env_cfg_h.i3c_target_agent_cfg_h[i]) begin
+      i3c_env_cfg_h.i3c_target_agent_cfg_h[i].has_daa = 1;
+    end
+  endfunction
+
   virtual task run_phase(uvm_phase phase);
     phase.raise_objection(this);
     `uvm_info(get_type_name(), "Starting DAA sequence", UVM_LOW)
@@ -20,9 +29,10 @@ class i3c_daa_write_8b_test extends i3c_base_test;
       "DAA done - updating target address to dynamic 0x08",
       UVM_LOW)
 
-    foreach(i3c_env_cfg_h.i3c_target_agent_cfg_h[i]) begin
-      i3c_env_cfg_h.i3c_target_agent_cfg_h[i].targetAddress = 7'h08;
-    end
+`uvm_info(get_type_name(),
+  $sformatf("DAA done - target[0] dynamic addr = 0x%0h",
+            i3c_env_cfg_h.i3c_target_agent_cfg_h[0].targetAddress),
+  UVM_LOW)
 
     `uvm_info(get_type_name(),
       "Starting SDR WRITE with dynamic address", UVM_LOW)

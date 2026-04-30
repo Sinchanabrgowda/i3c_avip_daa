@@ -10,7 +10,7 @@ class i3c_scoreboard extends uvm_component;
 
   i3c_env_config i3c_env_cfg_h;
 
-  // ── SDR Counters (existing) ───────────────────────────────
+  // ── SDR Counters ──────────────────────────────────────────
   int apb_tx_count;
   int target_tx_count;
   int write_pass;
@@ -18,7 +18,7 @@ class i3c_scoreboard extends uvm_component;
   int read_pass;
   int read_fail;
 
-  // ── DAA Counters ✅ NEW ───────────────────────────────────
+  // ── DAA Counters ──────────────────────────────────────────
   int daa_pid_pass;
   int daa_pid_fail;
   int daa_addr_pass;
@@ -27,25 +27,20 @@ class i3c_scoreboard extends uvm_component;
   int daa_parity_fail;
   int daa_devices_seen;
 
-  // ── Decoded expected values from CTRL (existing) ──────────
+  // ── Decoded expected values from CTRL ─────────────────────
   bit [6:0]  exp_address;
   bit [7:0]  exp_length;
   bit        exp_direction;
   bit [1:0]  exp_cmd_type;
   bit [7:0]  exp_ccc;
 
-  // ── SDR data queues (existing) ────────────────────────────
+  // ── SDR data queues ───────────────────────────────────────
   bit [7:0]  exp_write_data[$];
   bit [7:0]  exp_rd_wr_data[$];
 
-  // ── DAA expected state ✅ NEW ─────────────────────────────
-  // Next expected dynamic address — mirrors RTL dyn_addr counter
-  // which starts at 7'h08 and increments per assigned device.
+  // ── DAA expected state ────────────────────────────────────
   bit [6:0]  daa_next_exp_addr;
 
-  // Queue of {pid,bcr,dcr} per target from env config,
-  // populated in build_phase so compare_with_daa_target()
-  // can match each arriving target tx to its expected identity.
   typedef struct {
     bit [47:0] pid;
     bit [7:0]  bcr;
@@ -59,14 +54,14 @@ class i3c_scoreboard extends uvm_component;
   extern virtual task          run_phase(uvm_phase phase);
   extern virtual function void check_phase(uvm_phase phase);
 
-  // ── Existing SDR tasks ────────────────────────────────────
-  extern protected task collect_apb_transaction();
-  extern protected task compare_with_target();
+  // ── SDR tasks ─────────────────────────────────────────────
+  extern protected task          collect_apb_transaction();
+  extern protected task          compare_with_target();
   extern protected function void decode_ctrl(bit [31:0] ctrl_val);
 
-  // ── DAA tasks ✅ NEW ──────────────────────────────────────
-
-  extern protected task compare_with_daa_target();
+  // ── DAA tasks ─────────────────────────────────────────────
+  extern protected function bit  is_daa_transaction();
+  extern protected task          compare_with_daa_target();
 
 endclass : i3c_scoreboard
 
@@ -79,35 +74,6 @@ endfunction
 
 
 // ─────────────────────────────────────────────────────────────
-/*
-function void i3c_scoreboard::build_phase(uvm_phase phase);
-  super.build_phase(phase);
-  apb_analysis_fifo    = new("apb_analysis_fifo",    this);
-  target_analysis_fifo = new("target_analysis_fifo", this);
-
-  if(!uvm_config_db #(i3c_env_config)::get(
-      this, "", "i3c_env_config", i3c_env_cfg_h))
-    `uvm_fatal("SB_CFG", "Cannot get i3c_env_config from config_db")
-
-  // ✅ NEW: pre-load expected DAA device identities from config
-  // so compare_with_daa_target() doesn't need to touch config at runtime.
-  if(i3c_env_cfg_h.has_daa) begin
-    daa_next_exp_addr = DAA_FIRST_DYN_ADDR; // 7'h08 from globals_pkg
-
-    foreach(i3c_env_cfg_h.i3c_target_agent_cfg_h[i]) begin
-      daa_device_info_s dev;
-      dev.pid = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].pid;
-      dev.bcr = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].bcr;
-      dev.dcr = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].dcr;
-      daa_expected_devices.push_back(dev);
-      `uvm_info("SB_DAA",
-        $sformatf("Loaded expected device[%0d]: PID=0x%0h BCR=0x%0h DCR=0x%0h",
-                  i, dev.pid, dev.bcr, dev.dcr), UVM_MEDIUM)
-    end
-  end
-endfunction
-*/
-
 function void i3c_scoreboard::build_phase(uvm_phase phase);
   super.build_phase(phase);
   apb_analysis_fifo    = new("apb_analysis_fifo",    this);
@@ -119,7 +85,9 @@ function void i3c_scoreboard::build_phase(uvm_phase phase);
 
   daa_next_exp_addr = DAA_FIRST_DYN_ADDR;
 
-  // Always load — has_daa may not be set during build_phase
+  // Always pre-load expected DAA device identities from config.
+  // has_daa may not be set yet during build_phase in all tests,
+  // so load unconditionally — no harm if list is unused.
   foreach(i3c_env_cfg_h.i3c_target_agent_cfg_h[i]) begin
     daa_device_info_s dev;
     dev.pid = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].pid;
@@ -132,24 +100,38 @@ function void i3c_scoreboard::build_phase(uvm_phase phase);
   end
 endfunction
 
+
 // ─────────────────────────────────────────────────────────────
-// run_phase: dispatch SDR or DAA path based on cmd_type
+// is_daa_transaction
+//
+// Returns 1 if the decoded CTRL fields indicate DAA.
+// RTL triggers DAA two ways:
+//   cmd_type=2'd3               → always DAA
+//   cmd_type=2'd2 + ccc=0x07   → CCC ENTDAA, also DAA
+// ─────────────────────────────────────────────────────────────
+function bit i3c_scoreboard::is_daa_transaction();
+  if(exp_cmd_type == CMD_TYPE_DAA)
+    return 1;
+  if(exp_cmd_type == CMD_TYPE_CCC && exp_ccc == ENTDAA_CCC_CODE)
+    return 1;
+  return 0;
+endfunction
+
+
+// ─────────────────────────────────────────────────────────────
+// run_phase
 // ─────────────────────────────────────────────────────────────
 task i3c_scoreboard::run_phase(uvm_phase phase);
   super.run_phase(phase);
   forever begin
-    // ── Peek at APB side to decide SDR vs DAA ────────────────
-    // collect_apb_transaction() / collect_daa_apb_transaction()
-    // both block on the FIFO — we call collect_apb_transaction()
-    // first since it decodes cmd_type, then branch.
     collect_apb_transaction();
 
-    if(exp_cmd_type == CMD_TYPE_DAA) begin
-      // ── DAA path ──────────────────────────────────────────
-      `uvm_info("SB", "DAA transaction detected on APB side", UVM_MEDIUM)
+    if(is_daa_transaction()) begin
+      `uvm_info("SB",
+        $sformatf("DAA transaction detected: cmd_type=0x%0x ccc=0x%0x",
+                  exp_cmd_type, exp_ccc), UVM_MEDIUM)
       compare_with_daa_target();
     end else begin
-      // ── SDR path (existing) ───────────────────────────────
       compare_with_target();
     end
   end
@@ -157,7 +139,7 @@ endtask
 
 
 // ─────────────────────────────────────────────────────────────
-// collect_apb_transaction — existing, unchanged
+// collect_apb_transaction
 // ─────────────────────────────────────────────────────────────
 task i3c_scoreboard::collect_apb_transaction();
   apb_master_tx apb_pkt;
@@ -167,16 +149,16 @@ task i3c_scoreboard::collect_apb_transaction();
     apb_analysis_fifo.get(apb_pkt);
     apb_tx_count++;
 
-    // Collect WDATAB writes (SDR only — DAA has no payload)
+    // Collect WDATAB writes
     if(apb_pkt.pwrite == apb_global_pkg::WRITE &&
        apb_pkt.paddr[6:0] == 7'h30) begin
       exp_write_data.push_back(apb_pkt.pwdata[7:0]);
       exp_rd_wr_data.push_back(apb_pkt.pwdata[7:0]);
-      `uvm_info("SB", $sformatf("WDATAB collected = 0x%0x",
-                apb_pkt.pwdata[7:0]), UVM_HIGH)
+      `uvm_info("SB",
+        $sformatf("WDATAB collected = 0x%0x", apb_pkt.pwdata[7:0]), UVM_HIGH)
     end
 
-    // When CTRL start=1 seen — break and return
+    // Break when CTRL with start=1 is seen
     if(apb_pkt.pwrite == apb_global_pkg::WRITE &&
        apb_pkt.paddr[6:0] == 7'h0C &&
        apb_pkt.pwdata[31] == 1'b1) begin
@@ -192,7 +174,7 @@ endtask
 
 
 // ─────────────────────────────────────────────────────────────
-// decode_ctrl — existing, unchanged
+// decode_ctrl
 // ─────────────────────────────────────────────────────────────
 function void i3c_scoreboard::decode_ctrl(bit [31:0] ctrl_val);
   exp_address   = ctrl_val[6:0];
@@ -204,74 +186,71 @@ endfunction
 
 
 // ─────────────────────────────────────────────────────────────
-// ✅ NEW: compare_with_daa_target
+// compare_with_daa_target
 //
-// Called once per device that completes DAA.
-// Checks:
-//   1. CTRL fields: address=7'h7E, cmd_type=3, ccc=0x07
-//   2. PID/BCR/DCR match what that target was configured to drive
-//   3. Dynamic address = expected sequential value (0x08, 0x09…)
-//   4. Parity bit = ~^dyn_addr
-//   5. daa_ack == ACK (unless force_nack test)
+// Validates one DAA device assignment:
+//   1. CTRL cmd_type and CCC correctness
+//   2. PID/BCR/DCR match expected device config
+//   3. Dynamic address is sequential starting from DAA_FIRST_DYN_ADDR
+//   4. Parity OK (via daa_ack field)
+//   5. BCR[7]=0 (target role)
 // ─────────────────────────────────────────────────────────────
 task i3c_scoreboard::compare_with_daa_target();
-  i3c_target_tx  tgt;
+  i3c_target_tx     tgt;
   daa_device_info_s exp_dev;
-  bit [6:0]      exp_dyn_addr;
-  bit            exp_parity;
-  int            match_idx;
-  bit            pid_matched;
+  bit [6:0]         exp_dyn_addr;
+  int               match_idx;
+  bit               pid_matched;
 
-  // ── Get target DAA transaction from monitor ───────────────
   target_analysis_fifo.get(tgt);
   target_tx_count++;
   daa_devices_seen++;
 
   `uvm_info("SB_DAA",
-    $sformatf("DAA target pkt[%0d]:\n%s",
-              daa_devices_seen, tgt.sprint()), UVM_HIGH)
+    $sformatf("DAA target pkt[%0d]:\n%s", daa_devices_seen, tgt.sprint()),
+    UVM_HIGH)
 
-  // ✅ Guard: if the monitor sent an SDR packet (txn_type!=DAA)
-  // it means the monitor/driver flow has a mismatch. Flag it
-  // and skip DAA checks to avoid cascading false errors.
+  // Guard: monitor must send a DAA-typed packet
   if(tgt.txn_type !== i3c_target_tx::DAA) begin
     `uvm_error("SB_DAA_TXN_TYPE",
-      $sformatf("Expected DAA transaction but got txn_type=%s. \
-                 Check has_daa config and monitor proxy dispatch.",
+      $sformatf("Expected DAA transaction but got txn_type=%s. " ,
+                "Check has_daa config and monitor proxy dispatch.",
                 tgt.txn_type.name()))
     return;
   end
 
-  // ── 1. Validate CTRL was programmed correctly ─────────────
-  // NOTE: For DAA, CTRL[6:0] address field = 0x00 (broadcast
-  // is implicit in the RTL — it always sends 7E+W for ENTDAA).
-  // We do NOT check exp_address here. We check ccc and cmd_type
-  // which are the definitive DAA indicators in the CTRL register.
+  // ── 1. CTRL validation ────────────────────────────────────
   `uvm_info("SB_DAA_CTRL_ADDR",
     $sformatf("CTRL address field = 0x%0h (DAA uses broadcast implicitly)",
               exp_address), UVM_MEDIUM)
 
-  if(exp_ccc !== ENTDAA_CCC_CODE) begin
-    `uvm_error("SB_DAA_CTRL_CCC",
-      $sformatf("CTRL CCC: expected ENTDAA 0x07, got 0x%0h", exp_ccc))
+  // CCC check — only relevant when triggered via cmd_type=2
+  if(exp_cmd_type == CMD_TYPE_CCC) begin
+    if(exp_ccc == ENTDAA_CCC_CODE)
+      `uvm_info("SB_DAA_CTRL_CCC",
+        "CTRL CCC = 0x07 (ENTDAA) ✓", UVM_MEDIUM)
+    else
+      `uvm_error("SB_DAA_CTRL_CCC",
+        $sformatf("cmd_type=2 but CCC=0x%0h, expected ENTDAA=0x07",
+                  exp_ccc))
   end else begin
     `uvm_info("SB_DAA_CTRL_CCC",
-      "CTRL CCC = 0x07 (ENTDAA) ✓", UVM_MEDIUM)
+      "cmd_type=3 (explicit DAA) — CCC field not applicable ✓", UVM_MEDIUM)
   end
 
-  if(exp_cmd_type !== CMD_TYPE_DAA) begin
-    `uvm_error("SB_DAA_CTRL_CMD",
-      $sformatf("CTRL cmd_type: expected %0d (DAA), got %0d",
-                CMD_TYPE_DAA, exp_cmd_type))
-  end else begin
+  // cmd_type check
+  if(exp_cmd_type == CMD_TYPE_DAA)
     `uvm_info("SB_DAA_CTRL_CMD",
-      "CTRL cmd_type = 3 (DAA) ✓", UVM_MEDIUM)
-  end
+      "CTRL cmd_type = 3 (explicit DAA) ✓", UVM_MEDIUM)
+  else if(exp_cmd_type == CMD_TYPE_CCC && exp_ccc == ENTDAA_CCC_CODE)
+    `uvm_info("SB_DAA_CTRL_CMD",
+      "CTRL cmd_type = 2 + CCC=ENTDAA (implicit DAA) ✓", UVM_MEDIUM)
+  else
+    `uvm_error("SB_DAA_CTRL_CMD",
+      $sformatf("CTRL cmd_type=0x%0x ccc=0x%0x does not indicate DAA",
+                exp_cmd_type, exp_ccc))
 
-  // ── 2. Match PID to expected device list ─────────────────
-  // PID uniquely identifies a device — search the preloaded
-  // expected list. Order on bus depends on arbitration winner,
-  // so we search rather than assuming sequential order.
+  // ── 2. PID match ──────────────────────────────────────────
   pid_matched = 0;
   match_idx   = -1;
   foreach(daa_expected_devices[i]) begin
@@ -294,10 +273,10 @@ task i3c_scoreboard::compare_with_daa_target();
                 tgt.pid, match_idx), UVM_MEDIUM)
     daa_pid_pass++;
 
-    // Remove matched device so it can't match again
+    // Remove so it cannot match again
     daa_expected_devices.delete(match_idx);
 
-    // ── BCR check ──────────────────────────────────────────
+    // BCR check
     if(tgt.bcr !== exp_dev.bcr) begin
       `uvm_error("SB_DAA_BCR",
         $sformatf("BCR mismatch for PID 0x%0h: expected 0x%0h got 0x%0h",
@@ -309,7 +288,7 @@ task i3c_scoreboard::compare_with_daa_target();
       daa_pid_pass++;
     end
 
-    // ── DCR check ──────────────────────────────────────────
+    // DCR check
     if(tgt.dcr !== exp_dev.dcr) begin
       `uvm_error("SB_DAA_DCR",
         $sformatf("DCR mismatch for PID 0x%0h: expected 0x%0h got 0x%0h",
@@ -322,11 +301,8 @@ task i3c_scoreboard::compare_with_daa_target();
     end
   end
 
-  // ── 3. Dynamic address sequential check ──────────────────
-  // RTL daa_fsm starts at 7'h08 and increments each LOOP.
-  // daa_next_exp_addr tracks where we are in the sequence.
+  // ── 3. Dynamic address check ──────────────────────────────
   exp_dyn_addr = daa_next_exp_addr;
-
   if(tgt.dynamic_address !== exp_dyn_addr) begin
     `uvm_error("SB_DAA_DYNADDR",
       $sformatf("Dynamic address: expected 0x%0h got 0x%0h",
@@ -336,15 +312,10 @@ task i3c_scoreboard::compare_with_daa_target();
     `uvm_info("SB_DAA_DYNADDR",
       $sformatf("Dynamic address 0x%0h ✓", tgt.dynamic_address), UVM_MEDIUM)
     daa_addr_pass++;
-    daa_next_exp_addr++;  // advance for next device
+    daa_next_exp_addr++;
   end
 
-  // ── 4. Parity check: parity = ~^dyn_addr (from RTL) ──────
-  exp_parity = ~^tgt.dynamic_address;
-  // The parity bit is not separately stored in i3c_target_tx
-  // but the driver BFM already verified it and set daa_ack=NACK
-  // on failure, so we check daa_ack as the parity proxy.
-  // For a direct parity check, the monitor BFM logs parity errors.
+  // ── 4. Parity / ACK check ─────────────────────────────────
   if(tgt.daa_ack === ACK) begin
     `uvm_info("SB_DAA_PARITY",
       $sformatf("Parity OK for addr 0x%0h (daa_ack=ACK) ✓",
@@ -357,21 +328,20 @@ task i3c_scoreboard::compare_with_daa_target();
     daa_parity_fail++;
   end
 
-  // ── 5. BCR[7] role check: must be 0 for target ───────────
-  if(tgt.bcr[7] !== 1'b0) begin
+  // ── 5. BCR[7] role check ──────────────────────────────────
+  if(tgt.bcr[7] !== 1'b0)
     `uvm_error("SB_DAA_BCR_ROLE",
       $sformatf("BCR[7] must be 0 (target role) but got 1 for PID 0x%0h",
                 tgt.pid))
-  end else begin
+  else
     `uvm_info("SB_DAA_BCR_ROLE",
       "BCR[7]=0 (target role) ✓", UVM_MEDIUM)
-  end
 
 endtask : compare_with_daa_target
 
 
 // ─────────────────────────────────────────────────────────────
-// compare_with_target — existing SDR check, unchanged
+// compare_with_target — SDR path
 // ─────────────────────────────────────────────────────────────
 task i3c_scoreboard::compare_with_target();
   i3c_target_tx tgt;
@@ -404,7 +374,7 @@ task i3c_scoreboard::compare_with_target();
                   exp_op.name(), tgt.operation.name()))
   end
 
-  // ── WRITE comparison ──────────────────────────────────────
+  // ── WRITE path ────────────────────────────────────────────
   if(exp_direction == 1'b0) begin
     int actual_bytes = tgt.writeData.size();
     `uvm_info("SB", $sformatf(
@@ -437,7 +407,7 @@ task i3c_scoreboard::compare_with_target();
                   exp_write_data.size(), actual_bytes,
                   exp_write_data.size() - actual_bytes), UVM_MEDIUM)
 
-  // ── READ comparison ───────────────────────────────────────
+  // ── READ path ─────────────────────────────────────────────
   end else begin
     bit [7:0]     apb_read_data[$];
     apb_master_tx rd_pkt;
@@ -449,8 +419,9 @@ task i3c_scoreboard::compare_with_target();
       if(rd_pkt.pwrite == apb_global_pkg::READ &&
          rd_pkt.paddr[6:0] == 7'h40) begin
         apb_read_data.push_back(rd_pkt.prdata[7:0]);
-        `uvm_info("SB", $sformatf("RDATAB[%0d] = 0x%0x",
-                  rd_count, rd_pkt.prdata[7:0]), UVM_HIGH)
+        `uvm_info("SB",
+          $sformatf("RDATAB[%0d] = 0x%0x", rd_count, rd_pkt.prdata[7:0]),
+          UVM_HIGH)
         rd_count++;
       end
     end
@@ -488,7 +459,7 @@ endtask : compare_with_target
 
 
 // ─────────────────────────────────────────────────────────────
-// check_phase — extended with DAA summary ✅
+// check_phase
 // ─────────────────────────────────────────────────────────────
 function void i3c_scoreboard::check_phase(uvm_phase phase);
   super.check_phase(phase);
@@ -515,13 +486,10 @@ function void i3c_scoreboard::check_phase(uvm_phase phase);
     daa_parity_pass, daa_parity_fail),
     UVM_NONE)
 
-  // ── SDR failure checks (existing) ────────────────────────
   if(write_fail != 0)
     `uvm_error("SB_SUMMARY", "Write data mismatches detected")
-  if(read_fail  != 0)
+  if(read_fail != 0)
     `uvm_error("SB_SUMMARY", "Read data mismatches detected")
-
-  // ── DAA failure checks ✅ NEW ─────────────────────────────
   if(daa_pid_fail != 0)
     `uvm_error("SB_SUMMARY",
       $sformatf("%0d DAA PID/BCR/DCR mismatches detected", daa_pid_fail))
@@ -532,16 +500,12 @@ function void i3c_scoreboard::check_phase(uvm_phase phase);
     `uvm_error("SB_SUMMARY",
       $sformatf("%0d DAA parity/ACK failures detected", daa_parity_fail))
 
-  // ── DAA device count check ✅ NEW ─────────────────────────
-  // Verify all expected devices completed DAA.
   if(i3c_env_cfg_h.has_daa &&
-     daa_devices_seen != i3c_env_cfg_h.no_of_daa_devices) begin
+     daa_devices_seen != i3c_env_cfg_h.no_of_daa_devices)
     `uvm_error("SB_SUMMARY",
       $sformatf("DAA device count: expected %0d, saw %0d",
                 i3c_env_cfg_h.no_of_daa_devices, daa_devices_seen))
-  end
 
-  // ── Leftover FIFO checks (existing) ──────────────────────
   if(apb_analysis_fifo.size() != 0)
     `uvm_error("SB_SUMMARY",
       $sformatf("APB FIFO not empty: %0d leftover packets",

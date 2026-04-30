@@ -33,7 +33,7 @@ class i3c_sdr_read_virtual_seq extends top_virtual_base_seq;
     join_none;
 
 
-    i3c_env_cfg_h.regBlockHandle.ctrl_inst.address.set(TARGET0_ADDRESS);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.address.set(i3c_env_cfg_h.i3c_target_agent_cfg_h[0].targetAddress);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.length.set(8'd1);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.direction.set(1'b1);
     i3c_env_cfg_h.regBlockHandle.ctrl_inst.cmd_type.set(2'b00);

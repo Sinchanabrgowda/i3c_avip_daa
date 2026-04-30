@@ -116,6 +116,8 @@ function void i3c_base_test::setup_target_agent_cfg();
     i3c_env_cfg_h.i3c_target_agent_cfg_h[i].isActive    = uvm_active_passive_enum'(UVM_ACTIVE);
     i3c_env_cfg_h.i3c_target_agent_cfg_h[i].dataTransferDirection    = dataTransferDirection_e'(MSB_FIRST);
     i3c_env_cfg_h.i3c_target_agent_cfg_h[i].hasCoverage = hasCoverage_e'(TRUE);
+
+ i3c_env_cfg_h.i3c_target_agent_cfg_h[i].has_daa = 0;
   end
 endfunction: setup_target_agent_cfg
 

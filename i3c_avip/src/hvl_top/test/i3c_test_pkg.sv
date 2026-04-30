@@ -27,8 +27,17 @@ package i3c_test_pkg;
  `include "i3c_write_read_write_read_8b_test.sv" 
 `include "i3c_invalid_addr_write_test.sv"
  `include "i3c_fifo_full_write_test.sv"
+`include "i3c_fifo_empty_read_test.sv"
+
+
 
 `include "i3c_daa_write_8b_test.sv"
+`include "i3c_daa_read_8b_test.sv"
+
+`include "i3c_daa_write_read_write_read_8b_test.sv"
+`include "i3c_sdr_or_daa_write_8b_test.sv"
+
+`include "i3c_regression_test.sv"
 
  `include "i3c_writeOperationWith8bitsData_test.sv"
  `include "i3c_readOperationWith8bitsData_test.sv"

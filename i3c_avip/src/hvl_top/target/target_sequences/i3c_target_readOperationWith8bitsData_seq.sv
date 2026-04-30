@@ -21,17 +21,17 @@ task i3c_target_readOperationWith8bitsData_seq::body();
     `uvm_info(get_type_name(), "Before randomization - req created", UVM_NONE)
 
     // Address is NOT rand → assign before randomize
-    req.targetAddress = 7'h68;
-
+   // req.targetAddress = 7'h68;
+req.targetAddress = p_sequencer.i3c_target_agent_cfg_h.targetAddress;
     // Force READ operation
     req.operation = READ;
 
-//     if(!req.randomize() with {
-//         targetAddressStatus == ACK;
+     if(!req.randomize() with {
+         targetAddressStatus == ACK;
 
-//     })
+     })
 
-  if(!req.randomize())
+//  if(!req.randomize())
 
       begin
 
@@ -40,8 +40,13 @@ task i3c_target_readOperationWith8bitsData_seq::body();
     end
     else begin
 req.readData = new[1];
-    req.readData[0] = 8'h00;
-        `uvm_info(get_type_name(),
+    req.readData[0] = 8'h0;
+/*
+foreach(req.readData[i]) begin
+  req.readData[i] = i;  // or randomize: 0x00, 0x01, 0x02, ... 0x0F
+end     
+*/  
+ `uvm_info(get_type_name(),
         "Randomization SUCCESS - after overrides", UVM_NONE)
 
         req.print();
