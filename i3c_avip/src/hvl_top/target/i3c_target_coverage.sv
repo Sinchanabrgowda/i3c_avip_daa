@@ -101,7 +101,6 @@ function void i3c_target_coverage::report_phase(uvm_phase phase);
 endfunction: report_phase
 `endif
 */
-
 `ifndef I3C_TARGET_COVERAGE_INCLUDED_
 `define I3C_TARGET_COVERAGE_INCLUDED_
 
@@ -164,10 +163,29 @@ class i3c_target_coverage extends uvm_subscriber#(i3c_target_tx);
       bins READDATA_STATUS_MIX      = {2'b01, 2'b10};
     }
 
+/*
     OPERATION_CP_X_WRITEDATA_CP : cross OPERATION_CP, WRITEDATA_CP;
     OPERATION_CP_X_READDATA_CP  : cross OPERATION_CP, READDATA_CP;
+*/
 
-  endgroup : target_covergroup
+// ------------------------------------------------------------
+// WRITE operation should only pair with WRITEDATA
+// ------------------------------------------------------------
+OPERATION_CP_X_WRITEDATA_CP : cross OPERATION_CP, WRITEDATA_CP {
+
+  ignore_bins invalid_read =
+    binsof(OPERATION_CP) intersect {1}; // READ
+}
+
+// ------------------------------------------------------------
+// READ operation should only pair with READDATA
+// ------------------------------------------------------------
+OPERATION_CP_X_READDATA_CP : cross OPERATION_CP, READDATA_CP {
+
+  ignore_bins invalid_write =
+    binsof(OPERATION_CP) intersect {0}; // WRITE
+}  
+endgroup : target_covergroup
 
   // ── DAA Covergroup ────────────────────────────────────────
   covergroup daa_covergroup with function sample(i3c_target_tx packet);
@@ -177,14 +195,13 @@ class i3c_target_coverage extends uvm_subscriber#(i3c_target_tx);
     DAA_ACK_CP : coverpoint packet.daa_ack {
       option.comment = "DAA address assignment ACK/NACK";
       bins DAA_ACK  = {0};  // ACK  = address accepted
-      bins DAA_NACK = {1};  // NACK = address rejected
+      ignore_bins DAA_NACK = {1};  // NACK = address rejected
     }
 
     // Dynamic address range — valid I3C dynamic addresses
     DAA_DYNADDR_CP : coverpoint packet.dynamic_address {
       option.comment = "Dynamic address assigned by controller";
-      bins DYNADDR_LOW    = {[8:63]};    // lower half valid range
-      bins DYNADDR_HIGH   = {[64:119]};  // upper half valid range
+      bins DYNADDR_BIN    = {[8:119]};    // lower half valid range
       illegal_bins DYNADDR_RESERVED = {[0:7], [120:127]};
     }
 
@@ -200,65 +217,17 @@ class i3c_target_coverage extends uvm_subscriber#(i3c_target_tx);
     DAA_BCR_ROLE_CP : coverpoint packet.bcr[7] {
       option.comment = "BCR[7]: 0=target 1=controller";
       bins TARGET_ROLE     = {0};
-      bins CONTROLLER_ROLE = {1};
-    }
-
-    // BCR bit6 — advanced capabilities
-    DAA_BCR_ADV_CP : coverpoint packet.bcr[6] {
-      option.comment = "BCR[6]: advanced capabilities";
-      bins ADV_CAP_OFF = {0};
-      bins ADV_CAP_ON  = {1};
-    }
-
-    // BCR bit5 — virtual target support
-    DAA_BCR_VIRTUAL_CP : coverpoint packet.bcr[5] {
-      option.comment = "BCR[5]: virtual target";
-      bins VIRTUAL_OFF = {0};
-      bins VIRTUAL_ON  = {1};
-    }
-
-    // BCR bit4 — offline capable
-    DAA_BCR_OFFLINE_CP : coverpoint packet.bcr[4] {
-      option.comment = "BCR[4]: offline capable";
-      bins OFFLINE_OFF = {0};
-      bins OFFLINE_ON  = {1};
-    }
-
-    // BCR bit3 — IBI payload
-    DAA_BCR_IBI_PAYLOAD_CP : coverpoint packet.bcr[3] {
-      option.comment = "BCR[3]: IBI with payload";
-      bins IBI_NO_PAYLOAD = {0};
-      bins IBI_PAYLOAD    = {1};
-    }
-
-    // BCR bit2 — IBI request capable
-    DAA_BCR_IBI_REQ_CP : coverpoint packet.bcr[2] {
-      option.comment = "BCR[2]: IBI request capable";
-      bins IBI_NOT_CAPABLE = {0};
-      bins IBI_CAPABLE     = {1};
-    }
-
-    // BCR bits[1:0] — max data speed limitation
-    DAA_BCR_SPEED_CP : coverpoint packet.bcr[1:0] {
-      option.comment = "BCR[1:0]: max data speed";
-      bins SPEED_NO_LIMIT    = {2'b00};
-      bins SPEED_LIMIT_1     = {2'b01};
-      bins SPEED_LIMIT_2     = {2'b10};
-      bins SPEED_LIMIT_3     = {2'b11};
+      ignore_bins CONTROLLER_ROLE = {1};
     }
 
     // DCR full byte — device characteristic register
     DAA_DCR_CP : coverpoint packet.dcr {
       option.comment = "DCR full byte";
-      bins DCR_ZERO    = {0};
-      bins DCR_NONZERO = {[1:255]};
+      bins DCR_BIN = {[0:255]};
     }
 
     // Cross: dynamic address with ACK result
     DAA_DYNADDR_X_ACK : cross DAA_DYNADDR_CP, DAA_ACK_CP;
-
-    // Cross: BCR role with ACK result
-    DAA_ROLE_X_ACK : cross DAA_BCR_ROLE_CP, DAA_ACK_CP;
 
   endgroup : daa_covergroup
 

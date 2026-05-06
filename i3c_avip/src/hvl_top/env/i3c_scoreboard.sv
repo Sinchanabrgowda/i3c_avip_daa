@@ -4,7 +4,7 @@
 class i3c_scoreboard extends uvm_component;
   `uvm_component_utils(i3c_scoreboard)
 
-  // ── Analysis FIFOs ────────────────────────────────────────
+   // ── Analysis FIFOs ────────────────────────────────────────
   uvm_tlm_analysis_fifo #(apb_master_tx)  apb_analysis_fifo;
   uvm_tlm_analysis_fifo #(i3c_target_tx)  target_analysis_fifo;
 
@@ -18,16 +18,15 @@ class i3c_scoreboard extends uvm_component;
   int read_pass;
   int read_fail;
 
+
   // ── DAA Counters ──────────────────────────────────────────
-  int daa_pid_pass;
-  int daa_pid_fail;
   int daa_addr_pass;
   int daa_addr_fail;
   int daa_parity_pass;
   int daa_parity_fail;
   int daa_devices_seen;
 
-  // ── Decoded expected values from CTRL ─────────────────────
+// ── Decoded expected values from CTRL ─────────────────────
   bit [6:0]  exp_address;
   bit [7:0]  exp_length;
   bit        exp_direction;
@@ -41,12 +40,6 @@ class i3c_scoreboard extends uvm_component;
   // ── DAA expected state ────────────────────────────────────
   bit [6:0]  daa_next_exp_addr;
 
-  typedef struct {
-    bit [47:0] pid;
-    bit [7:0]  bcr;
-    bit [7:0]  dcr;
-  } daa_device_info_s;
-  daa_device_info_s daa_expected_devices[$];
 
   extern function new(string name = "i3c_scoreboard",
                       uvm_component parent = null);
@@ -65,14 +58,12 @@ class i3c_scoreboard extends uvm_component;
 
 endclass : i3c_scoreboard
 
-
 // ─────────────────────────────────────────────────────────────
 function i3c_scoreboard::new(string name = "i3c_scoreboard",
                               uvm_component parent = null);
   super.new(name, parent);
 endfunction
-
-
+    
 // ─────────────────────────────────────────────────────────────
 function void i3c_scoreboard::build_phase(uvm_phase phase);
   super.build_phase(phase);
@@ -85,22 +76,12 @@ function void i3c_scoreboard::build_phase(uvm_phase phase);
 
   daa_next_exp_addr = DAA_FIRST_DYN_ADDR;
 
-  // Always pre-load expected DAA device identities from config.
-  // has_daa may not be set yet during build_phase in all tests,
-  // so load unconditionally — no harm if list is unused.
-  foreach(i3c_env_cfg_h.i3c_target_agent_cfg_h[i]) begin
-    daa_device_info_s dev;
-    dev.pid = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].pid;
-    dev.bcr = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].bcr;
-    dev.dcr = i3c_env_cfg_h.i3c_target_agent_cfg_h[i].dcr;
-    daa_expected_devices.push_back(dev);
-    `uvm_info("SB_DAA_INIT",
-      $sformatf("Loaded expected device[%0d]: PID=0x%0h BCR=0x%0h DCR=0x%0h",
-                i, dev.pid, dev.bcr, dev.dcr), UVM_MEDIUM)
-  end
+  // ← REMOVED: Pre-loading expected DAA devices
+  // The scoreboard now just checks protocol correctness,
+  // not specific PID/BCR/DCR values
 endfunction
 
-
+    
 // ─────────────────────────────────────────────────────────────
 // is_daa_transaction
 //
@@ -184,23 +165,20 @@ function void i3c_scoreboard::decode_ctrl(bit [31:0] ctrl_val);
   exp_cmd_type  = ctrl_val[25:24];
 endfunction
 
-
 // ─────────────────────────────────────────────────────────────
-// compare_with_daa_target
+// compare_with_daa_target — SIMPLIFIED VERSION
 //
-// Validates one DAA device assignment:
+// Validates DAA protocol correctness:
 //   1. CTRL cmd_type and CCC correctness
-//   2. PID/BCR/DCR match expected device config
-//   3. Dynamic address is sequential starting from DAA_FIRST_DYN_ADDR
-//   4. Parity OK (via daa_ack field)
-//   5. BCR[7]=0 (target role)
+//   2. Dynamic address is sequential (0x08, 0x09, 0x0A, ...)
+//   3. Parity OK (via daa_ack field)
+//   4. BCR[7]=0 (target role)
+//
+// Does NOT check specific PID/BCR/DCR values since they're randomized.
 // ─────────────────────────────────────────────────────────────
 task i3c_scoreboard::compare_with_daa_target();
-  i3c_target_tx     tgt;
-  daa_device_info_s exp_dev;
-  bit [6:0]         exp_dyn_addr;
-  int               match_idx;
-  bit               pid_matched;
+  i3c_target_tx tgt;
+  bit [6:0]     exp_dyn_addr;
 
   target_analysis_fifo.get(tgt);
   target_tx_count++;
@@ -213,8 +191,7 @@ task i3c_scoreboard::compare_with_daa_target();
   // Guard: monitor must send a DAA-typed packet
   if(tgt.txn_type !== i3c_target_tx::DAA) begin
     `uvm_error("SB_DAA_TXN_TYPE",
-      $sformatf("Expected DAA transaction but got txn_type=%s. " ,
-                "Check has_daa config and monitor proxy dispatch.",
+      $sformatf("Expected DAA transaction but got txn_type=%s",
                 tgt.txn_type.name()))
     return;
   end
@@ -250,56 +227,10 @@ task i3c_scoreboard::compare_with_daa_target();
       $sformatf("CTRL cmd_type=0x%0x ccc=0x%0x does not indicate DAA",
                 exp_cmd_type, exp_ccc))
 
-  // ── 2. PID match ──────────────────────────────────────────
-  pid_matched = 0;
-  match_idx   = -1;
-  foreach(daa_expected_devices[i]) begin
-    if(daa_expected_devices[i].pid === tgt.pid) begin
-      pid_matched = 1;
-      match_idx   = i;
-      break;
-    end
-  end
-
-  if(!pid_matched) begin
-    `uvm_error("SB_DAA_PID",
-      $sformatf("PID 0x%0h from target not found in expected device list",
-                tgt.pid))
-    daa_pid_fail++;
-  end else begin
-    exp_dev = daa_expected_devices[match_idx];
-    `uvm_info("SB_DAA_PID",
-      $sformatf("PID 0x%0h matched expected device[%0d] ✓",
-                tgt.pid, match_idx), UVM_MEDIUM)
-    daa_pid_pass++;
-
-    // Remove so it cannot match again
-    daa_expected_devices.delete(match_idx);
-
-    // BCR check
-    if(tgt.bcr !== exp_dev.bcr) begin
-      `uvm_error("SB_DAA_BCR",
-        $sformatf("BCR mismatch for PID 0x%0h: expected 0x%0h got 0x%0h",
-                  tgt.pid, exp_dev.bcr, tgt.bcr))
-      daa_pid_fail++;
-    end else begin
-      `uvm_info("SB_DAA_BCR",
-        $sformatf("BCR 0x%0h ✓", tgt.bcr), UVM_MEDIUM)
-      daa_pid_pass++;
-    end
-
-    // DCR check
-    if(tgt.dcr !== exp_dev.dcr) begin
-      `uvm_error("SB_DAA_DCR",
-        $sformatf("DCR mismatch for PID 0x%0h: expected 0x%0h got 0x%0h",
-                  tgt.pid, exp_dev.dcr, tgt.dcr))
-      daa_pid_fail++;
-    end else begin
-      `uvm_info("SB_DAA_DCR",
-        $sformatf("DCR 0x%0h ✓", tgt.dcr), UVM_MEDIUM)
-      daa_pid_pass++;
-    end
-  end
+  // ── 2. Report PID/BCR/DCR (INFO ONLY - no check) ──────────
+  `uvm_info("SB_DAA_DEVICE_INFO",
+    $sformatf("Device[%0d]: PID=0x%0h BCR=0x%0h DCR=0x%0h",
+              daa_devices_seen-1, tgt.pid, tgt.bcr, tgt.dcr), UVM_LOW)
 
   // ── 3. Dynamic address check ──────────────────────────────
   exp_dyn_addr = daa_next_exp_addr;
@@ -339,7 +270,7 @@ task i3c_scoreboard::compare_with_daa_target();
 
 endtask : compare_with_daa_target
 
-
+    
 // ─────────────────────────────────────────────────────────────
 // compare_with_target — SDR path
 // ─────────────────────────────────────────────────────────────
@@ -457,9 +388,10 @@ task i3c_scoreboard::compare_with_target();
   end
 endtask : compare_with_target
 
+    
 
 // ─────────────────────────────────────────────────────────────
-// check_phase
+// check_phase — UPDATED SUMMARY
 // ─────────────────────────────────────────────────────────────
 function void i3c_scoreboard::check_phase(uvm_phase phase);
   super.check_phase(phase);
@@ -473,16 +405,14 @@ function void i3c_scoreboard::check_phase(uvm_phase phase);
     "  Read  byte pass / fail     : %0d / %0d\n",
     "  -- DAA --\n",
     "  Devices seen               : %0d\n",
-    "  PID/BCR/DCR pass / fail    : %0d / %0d\n",
-    "  Dyn address pass / fail    : %0d / %0d\n",
+    "  Dyn address pass / fail    : %0d / %0d\n",  // ← removed PID counters
     "  Parity / ACK pass / fail   : %0d / %0d\n",
     "=============================================="},
     apb_tx_count,    target_tx_count,
     write_pass,      write_fail,
     read_pass,       read_fail,
     daa_devices_seen,
-    daa_pid_pass,    daa_pid_fail,
-    daa_addr_pass,   daa_addr_fail,
+    daa_addr_pass,   daa_addr_fail,   // ← removed daa_pid_pass/fail
     daa_parity_pass, daa_parity_fail),
     UVM_NONE)
 
@@ -490,9 +420,7 @@ function void i3c_scoreboard::check_phase(uvm_phase phase);
     `uvm_error("SB_SUMMARY", "Write data mismatches detected")
   if(read_fail != 0)
     `uvm_error("SB_SUMMARY", "Read data mismatches detected")
-  if(daa_pid_fail != 0)
-    `uvm_error("SB_SUMMARY",
-      $sformatf("%0d DAA PID/BCR/DCR mismatches detected", daa_pid_fail))
+  // ← removed daa_pid_fail check
   if(daa_addr_fail != 0)
     `uvm_error("SB_SUMMARY",
       $sformatf("%0d DAA dynamic address mismatches detected", daa_addr_fail))
@@ -515,5 +443,5 @@ function void i3c_scoreboard::check_phase(uvm_phase phase);
       $sformatf("Target FIFO not empty: %0d leftover packets",
                 target_analysis_fifo.size()))
 endfunction : check_phase
-
-`endif
+    
+`endif    

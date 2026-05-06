@@ -22,14 +22,18 @@ package i3c_test_pkg;
 
  `include "i3c_base_test.sv"
  `include "i3c_write_8b_test.sv"
+`include "i3c_multi_write_test.sv"
  `include "i3c_read_8b_test.sv"
  `include "i3c_write_read_8b_test.sv"
+`include "i3c_multi_write_read_8b_test.sv"
  `include "i3c_write_read_write_read_8b_test.sv" 
 `include "i3c_invalid_addr_write_test.sv"
  `include "i3c_fifo_full_write_test.sv"
 `include "i3c_fifo_empty_read_test.sv"
-
-
+`include "i3c_multi_len_write_test.sv"
+`include "i3c_ccc_coverage_test.sv"
+`include "i3c_rx_fifo_full_test.sv"
+`include "i3c_multi_write_read_back_test.sv"
 
 `include "i3c_daa_write_8b_test.sv"
 `include "i3c_daa_read_8b_test.sv"

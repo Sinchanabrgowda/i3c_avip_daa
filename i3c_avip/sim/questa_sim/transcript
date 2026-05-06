@@ -15,3 +15,40 @@
 # //  18 U.S.C. Section 1905.
 # //
 # merged_coverage.ucdb opened as coverage dataset "merged_coverage"
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 221
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 210
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 170
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 192
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 209
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 248
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../rtl_dev/src/I3C_TOP.v -line 208
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../src/hvl_top/apb_master/apb_master_pkg.sv
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 
+# coverage exclude -srcfile ../../src/hvl_top/i3c_controller_pkg.sv
+# ** Warning: (vish-4053) File '../../src/hvl_top/i3c_controller_pkg.sv' was not found or has null coverage data.
+# ** Warning: (vish-4036) The 'coverage exclude' command had no effect on some/all objects because
+# no matching coverage data was found.
+# 

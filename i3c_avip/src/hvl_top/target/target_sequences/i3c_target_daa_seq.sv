@@ -24,6 +24,7 @@ task i3c_target_daa_seq::body();
 
   // Set txn_type to DAA before randomize
   req.txn_type = i3c_target_tx::DAA;
+/*
   if(!req.randomize() with {
     txn_type == i3c_target_tx::DAA;  // keep txn_type=DAA after randomize
     pid      == 48'hAABBCCDDEEFF;          // keep user-configured PID
@@ -32,7 +33,26 @@ task i3c_target_daa_seq::body();
     bcr[7]   == 1'b0;                 // must be target device role
       }) begin
     `uvm_error(get_type_name(), "Randomization failed")
-  end else begin
+  end
+*/
+if(!req.randomize() with {
+  txn_type == i3c_target_tx::DAA;
+
+  // PID full random
+  pid inside {[48'h0 : 48'hFFFFFFFFFFFF]};
+
+  // BCR random (except bit7)
+  bcr inside {[8'h00 : 8'h7F]};
+  bcr[7] == 1'b0;
+
+  // DCR full random
+  dcr inside {[8'h00 : 8'hFF]};
+
+}) begin
+  `uvm_error(get_type_name(), "Randomization failed")
+end
+
+ else begin
     `uvm_info(get_type_name(), $sformatf(
       "Randomization SUCCESS - txn_type=%s PID=0x%0x BCR=0x%0x DCR=0x%0x",
       req.txn_type.name(), req.pid, req.bcr, req.dcr), UVM_NONE)

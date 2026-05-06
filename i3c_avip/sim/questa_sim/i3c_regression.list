@@ -1,4 +1,5 @@
 i3c_write_8b_test
+i3c_multi_write_test
 i3c_read_8b_test 
 i3c_write_read_8b_test
 i3c_write_read_write_read_8b_test
@@ -8,3 +9,7 @@ i3c_daa_write_8b_test
 i3c_daa_read_8b_test
 i3c_daa_write_read_write_read_8b_test
 i3c_sdr_or_daa_write_8b_test
+#i3c_rx_fifo_full_test
+i3c_ccc_coverage_test
+#i3c_multi_write_read_back_test
+

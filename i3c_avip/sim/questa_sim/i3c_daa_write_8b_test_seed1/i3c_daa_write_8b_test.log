@@ -1,0 +1,578 @@
+# vsim -vopt work.hvl_top work.hdl_top -voptargs="+acc=npr" -sv_seed 1 -assertdebug "+UVM_TESTNAME=i3c_daa_write_8b_test" "+UVM_VERBOSITY=UVM_MEDIUM" "+define+" -l i3c_daa_write_8b_test_seed1/i3c_daa_write_8b_test.log -sva -coverage -c -do "log -r /*; add wave -r /*; coverage save -onexit -assert -directive -cvg -codeAll -testname i3c_daa_write_8b_test_seed1 i3c_daa_write_8b_test_seed1/i3c_daa_write_8b_test_coverage.ucdb; run -all; exit" -wlf i3c_daa_write_8b_test_seed1/waveform.wlf 
+# Start time: 09:19:11 on May 06,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.apb_master_driver_bfm(fast)
+# Loading work.apb_master_monitor_bfm(fast)
+# Loading work.apb_global_pkg(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.apb_master_pkg(fast)
+# Loading work.i3c_target_driver_bfm(fast)
+# Loading work.i3c_target_monitor_bfm(fast)
+# Loading work.i3c_globals_pkg(fast)
+# Loading work.i3c_target_pkg(fast)
+# Loading work.i3c_controller_driver_bfm(fast)
+# Loading work.i3c_controller_monitor_bfm(fast)
+# Loading work.i3c_controller_pkg(fast)
+# Loading work.i3c_env_pkg(fast)
+# Loading work.i3c_target_seq_pkg(fast)
+# Loading work.apb_master_seq_pkg(fast)
+# Loading work.i3c_ral_virtual_seq_pkg(fast)
+# Loading work.i3c_controller_seq_pkg(fast)
+# Loading work.i3c_virtual_seq_pkg(fast)
+# Loading work.i3c_test_pkg(fast)
+# Loading work.hvl_top(fast)
+# Loading work.hdl_top_sv_unit(fast)
+# Loading work.hdl_top(fast)
+# Loading work.apb_if_sv_unit(fast)
+# Loading work.apb_if(fast)
+# Loading work.i3c_if(fast)
+# Loading work.i3c_wrapper_sv_unit(fast)
+# Loading work.apb_i3c_wrapper(fast)
+# Loading work.I3C_TOP(fast)
+# Loading work.i3c_reg_interface(fast)
+# Loading work.i3c_cmd_ctrl(fast)
+# Loading work.i3c_Tx_FIFO(fast)
+# Loading work.i3c_Rx_FIFO(fast)
+# Loading work.i3c_sdr_fsm(fast)
+# Loading work.i3c_daa_fsm(fast)
+# Loading work.i3c_device_table(fast)
+# Loading work.i3c_bit_engine(fast)
+# Loading work.i3c_scl_gen(fast)
+# Loading work.apb_master_agent_bfm(fast)
+# Loading work.apb_master_driver_bfm_sv_unit(fast)
+# Loading work.apb_master_driver_bfm(fast)
+# Loading work.apb_master_monitor_bfm_sv_unit(fast)
+# Loading work.apb_master_monitor_bfm(fast)
+# Loading work.i3c_controller_agent_bfm(fast)
+# Loading work.i3c_controller_driver_bfm_sv_unit(fast)
+# Loading work.i3c_controller_driver_bfm(fast)
+# Loading work.i3c_controller_monitor_bfm_sv_unit(fast)
+# Loading work.i3c_controller_monitor_bfm(fast)
+# Loading work.i3c_target_agent_bfm(fast)
+# Loading work.i3c_target_driver_bfm_sv_unit(fast)
+# Loading work.i3c_target_driver_bfm(fast)
+# Loading work.i3c_target_monitor_bfm_sv_unit(fast)
+# Loading work.i3c_target_monitor_bfm(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/scl_o', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/scl_oen', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/sda_o', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/sda_oen', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# log -r /*
+#  add wave -r /*
+#  coverage save -onexit -assert -directive -cvg -codeAll -testname i3c_daa_write_8b_test_seed1 i3c_daa_write_8b_test_seed1/i3c_daa_write_8b_test_coverage.ucdb
+#  run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test i3c_daa_write_8b_test...
+# HDL TOP
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_agent_bfm.sv(17) @ 0: reporter [apb master agent bfm] APB MASTER AGENT BFM
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(55) @ 0: reporter [APB_MASTER_DRIVER_BFM] APB_MASTER_DRIVER_BFM
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(47) @ 0: reporter [APB_MASTER_MONITOR_BFM] APB MASTER MONITOR BFM
+# I3C_CONTROLLER_DRIVER_BFM
+# I3C_CONTROLLER_MONITOR_BFM
+# controller Agent BFM
+# I3C_TARGET_DRIVER_BFM
+# target Monitor BFM
+# DEBUG_MSHA :: drv_str = i3c_target_driver_bfm_0
+# DEBUG_MSHA :: mon_str = i3c_target_monitor_bfm_0
+# target Agent BFM
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(67) @ 0: uvm_test_top [i3c_daa_write_8b_test] i3c_controller_agent_cfg = 
+#  ----------------------------------------------------------------------------
+# Name                           Type                         Size  Value     
+# ----------------------------------------------------------------------------
+# i3c_controller_agent_cfg_h[0]  i3c_controller_agent_config  -     @526      
+#   isActive                     string                       10    UVM_ACTIVE
+#   no_of_targets                integral                     32    'd1       
+#   dataTransferDirection        string                       9     MSB_FIRST 
+#   primary_prescalar            integral                     3     'd1       
+#   secondary_prescalar          integral                     3     'd0       
+#   clockRateDividerValue        integral                     32    'd4       
+#   hasCoverage                  string                       4     TRUE      
+# ----------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(83) @ 0: uvm_test_top [i3c_daa_write_8b_test] i3c_target_agent_cfg = 
+#  ------------------------------------------------------------------------
+# Name                       Type                     Size  Value         
+# ------------------------------------------------------------------------
+# i3c_target_agent_cfg_h[0]  i3c_target_agent_config  -     @531          
+#   isActive                 string                   10    UVM_ACTIVE    
+#   dataTransferDirection    string                   9     MSB_FIRST     
+#   hasCoverage              string                   4     TRUE          
+#   targetAddress            integral                 7     'h68          
+#   target_id                integral                 32    'd0           
+#   daa_accept_address       integral                 1     'b1           
+#   pid                      integral                 48    'haabbccddeeff
+#   bcr                      integral                 8     'h0           
+#   dcr                      integral                 8     'hc2          
+# ------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(87) @ 0: uvm_test_top [i3c_daa_write_8b_test] i3c_env_cfg = 
+#  ----------------------------------------------------
+# Name                     Type            Size  Value
+# ----------------------------------------------------
+# i3c_env_cfg_h            i3c_env_config  -     @508 
+#   has_scoreboard         integral        1     1    
+#   has_virtual_sequencer  integral        1     1    
+#   no_of_controllers      integral        32    'd1  
+#   no_of_targets          integral        32    'd1  
+#   has_daa                integral        1     'd0  
+#   no_of_daa_devices      integral        32    'd0  
+# ----------------------------------------------------
+# 
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# ---------------------------------------------------------------------------------
+# Name                              Type                                Size  Value
+# ---------------------------------------------------------------------------------
+# uvm_test_top                      i3c_daa_write_8b_test               -     @477 
+#   i3c_env_h                       i3c_env                             -     @509 
+#     apb_master_agent_h            apb_master_agent                    -     @542 
+#       apb_master_cov_h            apb_master_coverage                 -     @868 
+#         analysis_imp              uvm_analysis_imp                    -     @875 
+#       apb_master_drv_proxy_h      apb_master_driver_proxy             -     @721 
+#         rsp_port                  uvm_analysis_port                   -     @736 
+#         seq_item_port             uvm_seq_item_pull_port              -     @728 
+#       apb_master_mon_proxy_h      apb_master_monitor_proxy            -     @853 
+#         apb_master_analysis_port  uvm_analysis_port                   -     @860 
+#       apb_master_seqr_h           apb_master_sequencer                -     @744 
+#         rsp_export                uvm_analysis_export                 -     @751 
+#         seq_item_export           uvm_seq_item_pull_imp               -     @845 
+#         arbitration_queue         array                               0     -    
+#         lock_queue                array                               0     -    
+#         num_last_reqs             integral                            32    'd1  
+#         num_last_rsps             integral                            32    'd1  
+#     i3c_scoreboard_h              i3c_scoreboard                      -     @665 
+#       apb_analysis_fifo           uvm_tlm_analysis_fifo #(T)          -     @891 
+#         analysis_export           uvm_analysis_imp                    -     @930 
+#         get_ap                    uvm_analysis_port                   -     @922 
+#         get_peek_export           uvm_get_peek_imp                    -     @906 
+#         put_ap                    uvm_analysis_port                   -     @914 
+#         put_export                uvm_put_imp                         -     @898 
+#       target_analysis_fifo        uvm_tlm_analysis_fifo #(T)          -     @938 
+#         analysis_export           uvm_analysis_imp                    -     @977 
+#         get_ap                    uvm_analysis_port                   -     @969 
+#         get_peek_export           uvm_get_peek_imp                    -     @953 
+#         put_ap                    uvm_analysis_port                   -     @961 
+#         put_export                uvm_put_imp                         -     @945 
+#     i3c_target_agent_h[0]         i3c_target_agent                    -     @549 
+#       i3c_target_cov_h            i3c_target_coverage                 -     @1138
+#         analysis_imp              uvm_analysis_imp                    -     @1145
+#       i3c_target_drv_proxy_h      i3c_target_driver_proxy             -     @1006
+#         rsp_port                  uvm_analysis_port                   -     @1021
+#         seq_item_port             uvm_seq_item_pull_port              -     @1013
+#       i3c_target_mon_proxy_h      i3c_target_monitor_proxy            -     @987 
+#         target_analysis_port      uvm_analysis_port                   -     @994 
+#       i3c_target_seqr_h           i3c_target_sequencer                -     @1029
+#         rsp_export                uvm_analysis_export                 -     @1036
+#         seq_item_export           uvm_seq_item_pull_imp               -     @1130
+#         arbitration_queue         array                               0     -    
+#         lock_queue                array                               0     -    
+#         num_last_reqs             integral                            32    'd1  
+#         num_last_rsps             integral                            32    'd1  
+#     topPredictor                  uvm_reg_predictor #(apb_master_tx)  -     @673 
+#       bus_in                      uvm_analysis_imp                    -     @680 
+#       reg_ap                      uvm_analysis_port                   -     @688 
+#     top_virtual_seqr_h            top_virtual_sequencer               -     @556 
+#       rsp_export                  uvm_analysis_export                 -     @563 
+#       seq_item_export             uvm_seq_item_pull_imp               -     @657 
+#       arbitration_queue           array                               0     -    
+#       lock_queue                  array                               0     -    
+#       num_last_reqs               integral                            32    'd1  
+#       num_last_rsps               integral                            32    'd1  
+# ---------------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(22) @ 0: uvm_test_top [i3c_daa_write_8b_test] Starting DAA sequence
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(84) @ 0: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Inside the master_monitor_proxy
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(28) @ 0: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [i3c_daa_virtual_seq] Starting DAA sequence
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(44) @ 0: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [CTRL_DEBUG] CTRL value before DAA update = 0x83070000
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(103) @ 90: reporter [DEBUG_MSHA] drive_apb_idle state = IDLE and state = 1
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(177) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] DAA mode: calling sample_daa()
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_daa_seq.sv(23) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_daa_seq [i3c_target_daa_seq] Before randomization - DAA req created
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_daa_seq.sv(58) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_daa_seq [i3c_target_daa_seq] Randomization SUCCESS - txn_type=DAA PID=0x3fcfb7ef0349 BCR=0x66 DCR=0x68
+# ---------------------------------------------------------------------------------------------------------------------------------
+# Name                           Type           Size  Value                                                                        
+# ---------------------------------------------------------------------------------------------------------------------------------
+# req                            i3c_target_tx  -     @1197                                                                        
+#   begin_time                   time           64    90                                                                           
+#   depth                        int            32    'd2                                                                          
+#   parent sequence (name)       string         14    target_daa_seq                                                               
+#   parent sequence (full name)  string         77    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h.target_daa_seq
+#   sequencer                    string         62    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h               
+#   txn_type                     string         3     DAA                                                                          
+#   pid                          integral       48    'h3fcfb7ef0349                                                               
+#   bcr                          integral       8     'h66                                                                         
+#   dcr                          integral       8     'h68                                                                         
+#   dynamic_address              integral       7     'h0                                                                          
+#   daa_ack                      integral       1     'b0                                                                          
+# ---------------------------------------------------------------------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(61) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Got item from sequencer
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(71) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Transaction type = DAA, calling drive_daa_data
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(217) @ 90: reporter [I3C_TARGET_DRIVER_BFM] DAA transaction started
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 110: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(150) @ 160: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] CTRL decoded: addr=0x0 dir=0 len=0 cmd_type=0x3 ccc=0x7
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(113) @ 160: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] DAA transaction detected: cmd_type=0x3 ccc=0x7
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 170: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1188             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h83070000        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(51) @ 170: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [CTRL_DEBUG] CTRL mirrored value after DAA update = 0x83070000
+# RTL @ 190: cmd_start after DAA
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 190: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 250: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1291             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# MONITOR :: checking start at time 280 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(97) @ 280: reporter [I3C_TARGET_MONITOR_BFM] DAA: START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(220) @ 280: reporter [I3C_TARGET_DRIVER_BFM] DAA: START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(105) @ 1560: reporter [I3C_TARGET_MONITOR_BFM] DAA: 7E+W sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(279) @ 1560: reporter [I3C_TARGET_DRIVER_BFM] DAA: broadcast addr = 0xfc (expect 0xFC)
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(122) @ 3000: reporter [I3C_TARGET_MONITOR_BFM] DAA: ENTDAA byte sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(300) @ 3000: reporter [I3C_TARGET_DRIVER_BFM] DAA: CCC byte = 0x7 (expect 0x07)
+# MONITOR :: checking start at time 3360 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(136) @ 3360: reporter [I3C_TARGET_MONITOR_BFM] DAA: Repeated START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(145) @ 4600: reporter [I3C_TARGET_MONITOR_BFM] DAA: 7E+R sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(355) @ 4600: reporter [I3C_TARGET_DRIVER_BFM] DAA: broadcast read addr = 0xfd (expect 0xFD)
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(157) @ 4760: reporter [I3C_TARGET_MONITOR_BFM] DAA: sampling 64 ARB bits {PID,BCR,DCR}
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(508) @ 4840: reporter [I3C_TARGET_DRIVER_BFM] DAA: driving PID=3fcfb7ef0349 BCR=66 DCR=68
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(166) @ 15000: reporter [I3C_TARGET_MONITOR_BFM] DAA: PID=0x3fcfb7ef0349 BCR=0x66 DCR=0x68
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(174) @ 16280: reporter [I3C_TARGET_MONITOR_BFM] DAA: dynamic_address=0x8 parity=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(568) @ 16280: reporter [I3C_TARGET_DRIVER_BFM] DAA: dynamic addr=0x8 parity OK → ACK
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(187) @ 16440: reporter [I3C_TARGET_MONITOR_BFM] DAA: assign ACK=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(265) @ 16461: reporter [I3C_TARGET_MONITOR_BFM] DAA: Repeated START detected after ASSIGN
+# MONITOR :: checking start at time 16660 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(136) @ 16660: reporter [I3C_TARGET_MONITOR_BFM] DAA: Repeated START detected
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(145) @ 17880: reporter [I3C_TARGET_MONITOR_BFM] DAA: 7E+R sampled
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(150) @ 18040: reporter [I3C_TARGET_MONITOR_BFM] DAA: NACK on 7E+R - no more devices
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(248) @ 19661: reporter [I3C_TARGET_DRIVER_BFM] DAA: STOP detected - DAA complete
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(95) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] DAA complete: PID=0x3fcfb7ef0349 BCR=0x66 DCR=0x68 DynAddr=0x8 ACK=0
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(100) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] DAA: targetAddress updated to dynamic 0x8
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(119) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] item_done called
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_monitor_bfm.sv(200) @ 19661: reporter [I3C_TARGET_MONITOR_BFM] DAA: complete, 1 device(s) assigned
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(184) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] DAA device[0] captured:
+# ------------------------------------------------------
+# Name               Type           Size  Value         
+# ------------------------------------------------------
+# daa_txn            i3c_target_tx  -     @1303         
+#   txn_type         string         3     DAA           
+#   pid              integral       48    'h3fcfb7ef0349
+#   bcr              integral       8     'h66          
+#   dcr              integral       8     'h68          
+#   dynamic_address  integral       7     'h8           
+#   daa_ack          integral       1     'b0           
+# ------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(270) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [DEBUG_m_coverage] I3C_target_TX {daa_txn} 1303 1 1315 @uvm_status_container@1 @uvm_object_string_pool__1@92 @uvm_event@35 @uvm_event@36 -1 18446744073709551615 18446744073709551615 18446744073709551615 null 0 0 0 null -1 0 1 null null 0 {} null null 0 0 {} ACK {} WRITE 0 {} {} 0 DAA 70161376674633 102 104 8 0 {i3c_target_tx}
+# UVM_INFO ../../src/hvl_top/target//i3c_target_monitor_proxy.sv(195) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_mon_proxy_h [i3c_target_monitor_proxy] DAA complete - switching to SDR monitoring mode
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_daa_seq.sv(64) @ 19661: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_daa_seq [i3c_target_daa_seq] finish_item returned - DAA item sent to driver
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(202) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_CTRL_ADDR] CTRL address field = 0x0 (DAA uses broadcast implicitly)
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(215) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_CTRL_CCC] cmd_type=3 (explicit DAA) — CCC field not applicable ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(221) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_CTRL_CMD] CTRL cmd_type = 3 (explicit DAA) ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(233) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_DEVICE_INFO] Device[0]: PID=0x3fcfb7ef0349 BCR=0x66 DCR=0x68
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(244) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_DYNADDR] Dynamic address 0x8 ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(253) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_PARITY] Parity OK for addr 0x8 (daa_ack=ACK) ✓
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(269) @ 19661: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_DAA_BCR_ROLE] BCR[7]=0 (target role) ✓
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_daa_virtual_seq.sv(59) @ 20250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@daaSeq [i3c_daa_virtual_seq] DAA completed ��� target assigned dynamic address 0x08
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(30) @ 20250: uvm_test_top [i3c_daa_write_8b_test] DAA done - updating target address to dynamic 0x08
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(35) @ 20250: uvm_test_top [i3c_daa_write_8b_test] DAA done - target[0] dynamic addr = 0x8
+# UVM_INFO ../../src/hvl_top/test/i3c_daa_write_8b_test.sv(38) @ 20250: uvm_test_top [i3c_daa_write_8b_test] Starting SDR WRITE with dynamic address
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(156) @ 20250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [i3c_sdr_write_virtual_seq] Randomized: wdata=0x91 len=1
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(159) @ 20250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [i3c_sdr_write_virtual_seq] Starting SDR WRITE test
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(46) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] Before randomization - req created
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(66) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] Randomization SUCCESS - after overrides
+# -----------------------------------------------------------------------------------------------------------------------------------
+# Name                           Type           Size  Value                                                                          
+# -----------------------------------------------------------------------------------------------------------------------------------
+# req                            i3c_target_tx  -     @1337                                                                          
+#   begin_time                   time           64    20250                                                                          
+#   depth                        int            32    'd2                                                                            
+#   parent sequence (name)       string         16    target_seq_write                                                               
+#   parent sequence (full name)  string         79    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h.target_seq_write
+#   sequencer                    string         62    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h                 
+#   txn_type                     string         3     SDR                                                                            
+#   targetAddress                integral       7     'h8                                                                            
+#   targetAddressStatus          string         3     ACK                                                                            
+#   operation                    string         5     WRITE                                                                          
+#   writeDataStatus[0]           string         3     ACK                                                                            
+#   writeDataStatus[1]           string         3     ACK                                                                            
+#   writeDataStatus[2]           string         3     ACK                                                                            
+#   writeDataStatus[3]           string         3     ACK                                                                            
+#   writeDataStatus[4]           string         3     ACK                                                                            
+#   writeDataStatus[5]           string         3     ACK                                                                            
+#   writeDataStatus[6]           string         3     ACK                                                                            
+#   writeDataStatus[7]           string         3     ACK                                                                            
+#   writeDataStatus[8]           string         3     ACK                                                                            
+#   writeDataStatus[9]           string         3     ACK                                                                            
+#   writeDataStatus[10]          string         3     ACK                                                                            
+#   writeDataStatus[11]          string         3     ACK                                                                            
+#   writeDataStatus[12]          string         3     ACK                                                                            
+#   writeDataStatus[13]          string         3     ACK                                                                            
+#   writeDataStatus[14]          string         3     ACK                                                                            
+#   writeDataStatus[15]          string         3     ACK                                                                            
+#   writeDataStatus[16]          string         3     ACK                                                                            
+#   writeDataStatus[17]          string         3     ACK                                                                            
+#   writeDataStatus[18]          string         3     ACK                                                                            
+#   writeDataStatus[19]          string         3     ACK                                                                            
+#   writeDataStatus[20]          string         3     ACK                                                                            
+#   writeDataStatus[21]          string         3     ACK                                                                            
+#   writeDataStatus[22]          string         3     ACK                                                                            
+#   writeDataStatus[23]          string         3     ACK                                                                            
+#   writeDataStatus[24]          string         3     ACK                                                                            
+#   writeDataStatus[25]          string         3     ACK                                                                            
+#   writeDataStatus[26]          string         3     ACK                                                                            
+#   writeDataStatus[27]          string         3     ACK                                                                            
+#   writeDataStatus[28]          string         3     ACK                                                                            
+#   writeDataStatus[29]          string         3     ACK                                                                            
+#   writeDataStatus[30]          string         3     ACK                                                                            
+#   writeDataStatus[31]          string         3     ACK                                                                            
+#   writeDataStatus[32]          string         3     ACK                                                                            
+#   writeDataStatus[33]          string         3     ACK                                                                            
+#   writeDataStatus[34]          string         3     ACK                                                                            
+#   writeDataStatus[35]          string         3     ACK                                                                            
+#   writeDataStatus[36]          string         3     ACK                                                                            
+#   writeDataStatus[37]          string         3     ACK                                                                            
+#   writeDataStatus[38]          string         3     ACK                                                                            
+#   writeDataStatus[39]          string         3     ACK                                                                            
+#   writeDataStatus[40]          string         3     ACK                                                                            
+#   writeDataStatus[41]          string         3     ACK                                                                            
+#   writeDataStatus[42]          string         3     ACK                                                                            
+#   writeDataStatus[43]          string         3     ACK                                                                            
+#   writeDataStatus[44]          string         3     ACK                                                                            
+#   writeDataStatus[45]          string         3     ACK                                                                            
+#   writeDataStatus[46]          string         3     ACK                                                                            
+#   writeDataStatus[47]          string         3     ACK                                                                            
+#   writeDataStatus[48]          string         3     ACK                                                                            
+#   writeDataStatus[49]          string         3     ACK                                                                            
+#   writeDataStatus[50]          string         3     ACK                                                                            
+#   writeDataStatus[51]          string         3     ACK                                                                            
+#   writeDataStatus[52]          string         3     ACK                                                                            
+#   writeDataStatus[53]          string         3     ACK                                                                            
+#   writeDataStatus[54]          string         3     ACK                                                                            
+#   writeDataStatus[55]          string         3     ACK                                                                            
+#   writeDataStatus[56]          string         3     ACK                                                                            
+#   writeDataStatus[57]          string         3     ACK                                                                            
+#   writeDataStatus[58]          string         3     ACK                                                                            
+#   writeDataStatus[59]          string         3     ACK                                                                            
+#   writeDataStatus[60]          string         3     ACK                                                                            
+#   writeDataStatus[61]          string         3     ACK                                                                            
+#   writeDataStatus[62]          string         3     ACK                                                                            
+#   writeDataStatus[63]          string         3     ACK                                                                            
+# -----------------------------------------------------------------------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(61) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Got item from sequencer
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(110) @ 20250: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Transaction type = SDR, calling drive_data
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 20270: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [20330] REG_WRITE: WDATAB <= 91
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 20330: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1329             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h91              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(180) @ 20330: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [WDATAB_DEBUG] WDATAB mirrored value = 0x91
+# [20350] FIFO WRITE: din=91 addr=0 wr_ptr=0
+# [20350] STATUS: wr_en=1 rd_en=0 full=0 empty=1 wr_ptr=0 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 20350: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [20410] REG_INTERFACE rd: WDATAB=91 assigning r_data=91
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 20410: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1357             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         4     READ              
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b0               
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(197) @ 20410: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [CTRL_DEBUG] CTRL value before update = 0x80000088
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 20430: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(150) @ 20480: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] CTRL decoded: addr=0x8 dir=0 len=1 cmd_type=0x0 ccc=0x0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 20490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1373             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h80000088        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(206) @ 20490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [CTRL_DEBUG] CTRL mirrored value after update = 0x80000088
+# RTL @ 20510: cmd_start after DAA
+# RTL @ 20530: start_sdr after DAA
+# MONITOR :: checking start at time 20580 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(617) @ 21660: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: local_addr = 0x8
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(622) @ 21660: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: cfg target_addr = 0x8
+# [22050] FIFO READ : dout=91 addr=0 rd_ptr=0
+# [22050] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=1 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 23260: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x91
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(270) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [DEBUG_m_coverage] I3C_target_TX {i3c_target_tx} 1389 1 1393 @uvm_status_container@1 @uvm_object_string_pool__1@113 @uvm_event@79 @uvm_event@80 -1 18446744073709551615 18446744073709551615 18446744073709551615 null 0 0 0 null -1 0 -1 null null 0 {} null null 0 0 {0} ACK {ACK} WRITE 8 {145} {ACK} 0 SDR 0 0 0 0 0 {i3c_target_tx}
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(119) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] item_done called
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(288) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_ADDR_MATCH] Address match: 0x8
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(301) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_OP_MATCH] Operation match: WRITE
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(313) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] Write: APB sent 1 bytes, CTRL length=1, target received 1 bytes
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 23601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[0]: expected 0x91 got 0x91
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(71) @ 23601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] finish_item returned - item sent to driver
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_sdr_write_virtual_seq.sv(211) @ 70490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrWriteSeq [i3c_sdr_write_virtual_seq] SDR WRITE issued and registers verified
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 123490: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(417) @ 123490: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_SUMMARY] 
+# ============= SCOREBOARD SUMMARY =============
+#   APB transactions seen      : 5
+#   I3C target transactions    : 2
+#   -- SDR --
+#   Write byte pass / fail     : 1 / 0
+#   Read  byte pass / fail     : 0 / 0
+#   -- DAA --
+#   Devices seen               : 1
+#   Dyn address pass / fail    : 1 / 0
+#   Parity / ACK pass / fail   : 1 / 0
+# ==============================================
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(121) @ 123490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] APB Master Agent Coverage = 26.04 %
+# 
+# --------------------------------------
+# target COVERAGE
+# --------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(306) @ 123490: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent SDR Coverage = 35.19 %
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(310) @ 123490: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent DAA Coverage = 91.67 %
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(315) @ 123490: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent Total Coverage = 63.43 %
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :  100
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [APB_MASTER_DRIVER_BFM]     1
+# [APB_MASTER_MONITOR_BFM]     1
+# [CTRL_DEBUG]     4
+# [DEBUG_MSHA]     6
+# [DEBUG_m_coverage]     2
+# [I3C_TARGET_DRIVER_BFM]    11
+# [I3C_TARGET_MONITOR_BFM]    14
+# [Questa UVM]     2
+# [RNTST]     1
+# [SB]     4
+# [SB_ADDR_MATCH]     1
+# [SB_DAA_BCR_ROLE]     1
+# [SB_DAA_CTRL_ADDR]     1
+# [SB_DAA_CTRL_CCC]     1
+# [SB_DAA_CTRL_CMD]     1
+# [SB_DAA_DEVICE_INFO]     1
+# [SB_DAA_DYNADDR]     1
+# [SB_DAA_PARITY]     1
+# [SB_OP_MATCH]     1
+# [SB_SUMMARY]     1
+# [SB_WDATA_MATCH]     1
+# [TEST_DONE]     1
+# [TGT_DRV_PROXY]     8
+# [UVMTOP]     1
+# [WDATAB_DEBUG]     1
+# [apb master agent bfm]     1
+# [apb_master_coverage]     1
+# [apb_master_driver_proxy]     5
+# [apb_master_monitor_proxy]     1
+# [i3c_daa_virtual_seq]     2
+# [i3c_daa_write_8b_test]     7
+# [i3c_sdr_write_virtual_seq]     3
+# [i3c_target_coverage]     3
+# [i3c_target_daa_seq]     3
+# [i3c_target_monitor_proxy]     3
+# [i3c_target_writeOperationWith8bitsData_seq]     3
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 123490 ns  Iteration: 53  Instance: /hvl_top
+# Saving coverage database on exit...
+# End time: 09:19:13 on May 06,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 4

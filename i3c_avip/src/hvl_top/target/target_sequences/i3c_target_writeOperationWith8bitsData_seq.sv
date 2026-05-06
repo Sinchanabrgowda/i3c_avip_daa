@@ -59,7 +59,7 @@ req.operation     = WRITE;
       // writeDataStatus size is soft==128, override to match transfer len=1
     //  req.writeDataStatus    = new[1];
     //  req.writeDataStatus[0] = ACK;
- req.writeDataStatus = new[17];
+ req.writeDataStatus = new[64];
     foreach(req.writeDataStatus[i])
       req.writeDataStatus[i] = ACK;
       

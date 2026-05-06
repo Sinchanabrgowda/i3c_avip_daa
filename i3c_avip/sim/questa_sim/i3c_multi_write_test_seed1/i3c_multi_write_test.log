@@ -1,0 +1,1977 @@
+# vsim -vopt work.hvl_top work.hdl_top -voptargs="+acc=npr" -sv_seed 1 -assertdebug "+UVM_TESTNAME=i3c_multi_write_test" "+UVM_VERBOSITY=UVM_MEDIUM" "+define+" -l i3c_multi_write_test_seed1/i3c_multi_write_test.log -sva -coverage -c -do "log -r /*; add wave -r /*; coverage save -onexit -assert -directive -cvg -codeAll -testname i3c_multi_write_test_seed1 i3c_multi_write_test_seed1/i3c_multi_write_test_coverage.ucdb; run -all; exit" -wlf i3c_multi_write_test_seed1/waveform.wlf 
+# Start time: 09:18:47 on May 06,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.apb_master_driver_bfm(fast)
+# Loading work.apb_master_monitor_bfm(fast)
+# Loading work.apb_global_pkg(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.apb_master_pkg(fast)
+# Loading work.i3c_target_driver_bfm(fast)
+# Loading work.i3c_target_monitor_bfm(fast)
+# Loading work.i3c_globals_pkg(fast)
+# Loading work.i3c_target_pkg(fast)
+# Loading work.i3c_controller_driver_bfm(fast)
+# Loading work.i3c_controller_monitor_bfm(fast)
+# Loading work.i3c_controller_pkg(fast)
+# Loading work.i3c_env_pkg(fast)
+# Loading work.i3c_target_seq_pkg(fast)
+# Loading work.apb_master_seq_pkg(fast)
+# Loading work.i3c_ral_virtual_seq_pkg(fast)
+# Loading work.i3c_controller_seq_pkg(fast)
+# Loading work.i3c_virtual_seq_pkg(fast)
+# Loading work.i3c_test_pkg(fast)
+# Loading work.hvl_top(fast)
+# Loading work.hdl_top_sv_unit(fast)
+# Loading work.hdl_top(fast)
+# Loading work.apb_if_sv_unit(fast)
+# Loading work.apb_if(fast)
+# Loading work.i3c_if(fast)
+# Loading work.i3c_wrapper_sv_unit(fast)
+# Loading work.apb_i3c_wrapper(fast)
+# Loading work.I3C_TOP(fast)
+# Loading work.i3c_reg_interface(fast)
+# Loading work.i3c_cmd_ctrl(fast)
+# Loading work.i3c_Tx_FIFO(fast)
+# Loading work.i3c_Rx_FIFO(fast)
+# Loading work.i3c_sdr_fsm(fast)
+# Loading work.i3c_daa_fsm(fast)
+# Loading work.i3c_device_table(fast)
+# Loading work.i3c_bit_engine(fast)
+# Loading work.i3c_scl_gen(fast)
+# Loading work.apb_master_agent_bfm(fast)
+# Loading work.apb_master_driver_bfm_sv_unit(fast)
+# Loading work.apb_master_driver_bfm(fast)
+# Loading work.apb_master_monitor_bfm_sv_unit(fast)
+# Loading work.apb_master_monitor_bfm(fast)
+# Loading work.i3c_controller_agent_bfm(fast)
+# Loading work.i3c_controller_driver_bfm_sv_unit(fast)
+# Loading work.i3c_controller_driver_bfm(fast)
+# Loading work.i3c_controller_monitor_bfm_sv_unit(fast)
+# Loading work.i3c_controller_monitor_bfm(fast)
+# Loading work.i3c_target_agent_bfm(fast)
+# Loading work.i3c_target_driver_bfm_sv_unit(fast)
+# Loading work.i3c_target_driver_bfm(fast)
+# Loading work.i3c_target_monitor_bfm_sv_unit(fast)
+# Loading work.i3c_target_monitor_bfm(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/scl_o', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/scl_oen', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/sda_o', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/target_agent_bfm/i3c_target_agent_bfm.sv(11): Variable '/hdl_top/intf_target/sda_oen', driven via a port connection, is multiply driven. See ../../src/hdl_top/controller_agent_bfm/i3c_controller_agent_bfm.sv(13).
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/i3c_target_agent_bfm[0]/i3c_target_agent_bfm_h/i3c_target_drv_bfm_h File: ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# log -r /*
+#  add wave -r /*
+#  coverage save -onexit -assert -directive -cvg -codeAll -testname i3c_multi_write_test_seed1 i3c_multi_write_test_seed1/i3c_multi_write_test_coverage.ucdb
+#  run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test i3c_multi_write_test...
+# HDL TOP
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_agent_bfm.sv(17) @ 0: reporter [apb master agent bfm] APB MASTER AGENT BFM
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(55) @ 0: reporter [APB_MASTER_DRIVER_BFM] APB_MASTER_DRIVER_BFM
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_monitor_bfm.sv(47) @ 0: reporter [APB_MASTER_MONITOR_BFM] APB MASTER MONITOR BFM
+# I3C_CONTROLLER_DRIVER_BFM
+# I3C_CONTROLLER_MONITOR_BFM
+# controller Agent BFM
+# I3C_TARGET_DRIVER_BFM
+# target Monitor BFM
+# DEBUG_MSHA :: drv_str = i3c_target_driver_bfm_0
+# DEBUG_MSHA :: mon_str = i3c_target_monitor_bfm_0
+# target Agent BFM
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(67) @ 0: uvm_test_top [i3c_multi_write_test] i3c_controller_agent_cfg = 
+#  ----------------------------------------------------------------------------
+# Name                           Type                         Size  Value     
+# ----------------------------------------------------------------------------
+# i3c_controller_agent_cfg_h[0]  i3c_controller_agent_config  -     @526      
+#   isActive                     string                       10    UVM_ACTIVE
+#   no_of_targets                integral                     32    'd1       
+#   dataTransferDirection        string                       9     MSB_FIRST 
+#   primary_prescalar            integral                     3     'd1       
+#   secondary_prescalar          integral                     3     'd0       
+#   clockRateDividerValue        integral                     32    'd4       
+#   hasCoverage                  string                       4     TRUE      
+# ----------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(83) @ 0: uvm_test_top [i3c_multi_write_test] i3c_target_agent_cfg = 
+#  ------------------------------------------------------------------------
+# Name                       Type                     Size  Value         
+# ------------------------------------------------------------------------
+# i3c_target_agent_cfg_h[0]  i3c_target_agent_config  -     @531          
+#   isActive                 string                   10    UVM_ACTIVE    
+#   dataTransferDirection    string                   9     MSB_FIRST     
+#   hasCoverage              string                   4     TRUE          
+#   targetAddress            integral                 7     'h68          
+#   target_id                integral                 32    'd0           
+#   daa_accept_address       integral                 1     'b1           
+#   pid                      integral                 48    'haabbccddeeff
+#   bcr                      integral                 8     'h0           
+#   dcr                      integral                 8     'hc2          
+# ------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_base_test.sv(87) @ 0: uvm_test_top [i3c_multi_write_test] i3c_env_cfg = 
+#  ----------------------------------------------------
+# Name                     Type            Size  Value
+# ----------------------------------------------------
+# i3c_env_cfg_h            i3c_env_config  -     @508 
+#   has_scoreboard         integral        1     1    
+#   has_virtual_sequencer  integral        1     1    
+#   no_of_controllers      integral        32    'd1  
+#   no_of_targets          integral        32    'd1  
+#   has_daa                integral        1     'd0  
+#   no_of_daa_devices      integral        32    'd0  
+# ----------------------------------------------------
+# 
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# ---------------------------------------------------------------------------------
+# Name                              Type                                Size  Value
+# ---------------------------------------------------------------------------------
+# uvm_test_top                      i3c_multi_write_test                -     @477 
+#   i3c_env_h                       i3c_env                             -     @509 
+#     apb_master_agent_h            apb_master_agent                    -     @542 
+#       apb_master_cov_h            apb_master_coverage                 -     @868 
+#         analysis_imp              uvm_analysis_imp                    -     @875 
+#       apb_master_drv_proxy_h      apb_master_driver_proxy             -     @721 
+#         rsp_port                  uvm_analysis_port                   -     @736 
+#         seq_item_port             uvm_seq_item_pull_port              -     @728 
+#       apb_master_mon_proxy_h      apb_master_monitor_proxy            -     @853 
+#         apb_master_analysis_port  uvm_analysis_port                   -     @860 
+#       apb_master_seqr_h           apb_master_sequencer                -     @744 
+#         rsp_export                uvm_analysis_export                 -     @751 
+#         seq_item_export           uvm_seq_item_pull_imp               -     @845 
+#         arbitration_queue         array                               0     -    
+#         lock_queue                array                               0     -    
+#         num_last_reqs             integral                            32    'd1  
+#         num_last_rsps             integral                            32    'd1  
+#     i3c_scoreboard_h              i3c_scoreboard                      -     @665 
+#       apb_analysis_fifo           uvm_tlm_analysis_fifo #(T)          -     @891 
+#         analysis_export           uvm_analysis_imp                    -     @930 
+#         get_ap                    uvm_analysis_port                   -     @922 
+#         get_peek_export           uvm_get_peek_imp                    -     @906 
+#         put_ap                    uvm_analysis_port                   -     @914 
+#         put_export                uvm_put_imp                         -     @898 
+#       target_analysis_fifo        uvm_tlm_analysis_fifo #(T)          -     @938 
+#         analysis_export           uvm_analysis_imp                    -     @977 
+#         get_ap                    uvm_analysis_port                   -     @969 
+#         get_peek_export           uvm_get_peek_imp                    -     @953 
+#         put_ap                    uvm_analysis_port                   -     @961 
+#         put_export                uvm_put_imp                         -     @945 
+#     i3c_target_agent_h[0]         i3c_target_agent                    -     @549 
+#       i3c_target_cov_h            i3c_target_coverage                 -     @1138
+#         analysis_imp              uvm_analysis_imp                    -     @1145
+#       i3c_target_drv_proxy_h      i3c_target_driver_proxy             -     @1006
+#         rsp_port                  uvm_analysis_port                   -     @1021
+#         seq_item_port             uvm_seq_item_pull_port              -     @1013
+#       i3c_target_mon_proxy_h      i3c_target_monitor_proxy            -     @987 
+#         target_analysis_port      uvm_analysis_port                   -     @994 
+#       i3c_target_seqr_h           i3c_target_sequencer                -     @1029
+#         rsp_export                uvm_analysis_export                 -     @1036
+#         seq_item_export           uvm_seq_item_pull_imp               -     @1130
+#         arbitration_queue         array                               0     -    
+#         lock_queue                array                               0     -    
+#         num_last_reqs             integral                            32    'd1  
+#         num_last_rsps             integral                            32    'd1  
+#     topPredictor                  uvm_reg_predictor #(apb_master_tx)  -     @673 
+#       bus_in                      uvm_analysis_imp                    -     @680 
+#       reg_ap                      uvm_analysis_port                   -     @688 
+#     top_virtual_seqr_h            top_virtual_sequencer               -     @556 
+#       rsp_export                  uvm_analysis_export                 -     @563 
+#       seq_item_export             uvm_seq_item_pull_imp               -     @657 
+#       arbitration_queue           array                               0     -    
+#       lock_queue                  array                               0     -    
+#       num_last_reqs               integral                            32    'd1  
+#       num_last_rsps               integral                            32    'd1  
+# ---------------------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/i3c_multi_write_test.sv(16) @ 0: uvm_test_top [i3c_multi_write_test] Starting MULTI SDR WRITE sequence
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_monitor_proxy.sv(84) @ 0: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_mon_proxy_h [apb_master_monitor_proxy] Inside the master_monitor_proxy
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(46) @ 0: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [i3c_multi_wdatab_seq] Len=71 Data='{59, 124, 203, 48, 218, 181, 190, 55, 61, 18, 153, 192, 124, 20, 182, 181, 202, 0, 194, 187, 40, 95, 232, 158, 106, 2, 232, 152, 234, 159, 240, 188, 216, 21, 234, 38, 231, 251, 71, 228, 56, 22, 162, 113, 204, 180, 5, 19, 35, 41, 45, 33, 194, 247, 194, 174, 201, 37, 59, 63, 28, 79, 236, 195, 78, 247, 205, 47, 112, 100, 115}
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(50) @ 0: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [i3c_multi_wdatab_seq] Starting SDR MULTI-BYTE WRITE test
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(103) @ 90: reporter [DEBUG_MSHA] drive_apb_idle state = IDLE and state = 1
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(46) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] Before randomization - req created
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(66) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] Randomization SUCCESS - after overrides
+# -----------------------------------------------------------------------------------------------------------------------------------
+# Name                           Type           Size  Value                                                                          
+# -----------------------------------------------------------------------------------------------------------------------------------
+# req                            i3c_target_tx  -     @1197                                                                          
+#   begin_time                   time           64    90                                                                             
+#   depth                        int            32    'd2                                                                            
+#   parent sequence (name)       string         16    target_seq_write                                                               
+#   parent sequence (full name)  string         79    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h.target_seq_write
+#   sequencer                    string         62    uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h                 
+#   txn_type                     string         3     SDR                                                                            
+#   targetAddress                integral       7     'h68                                                                           
+#   targetAddressStatus          string         3     ACK                                                                            
+#   operation                    string         5     WRITE                                                                          
+#   writeDataStatus[0]           string         3     ACK                                                                            
+#   writeDataStatus[1]           string         3     ACK                                                                            
+#   writeDataStatus[2]           string         3     ACK                                                                            
+#   writeDataStatus[3]           string         3     ACK                                                                            
+#   writeDataStatus[4]           string         3     ACK                                                                            
+#   writeDataStatus[5]           string         3     ACK                                                                            
+#   writeDataStatus[6]           string         3     ACK                                                                            
+#   writeDataStatus[7]           string         3     ACK                                                                            
+#   writeDataStatus[8]           string         3     ACK                                                                            
+#   writeDataStatus[9]           string         3     ACK                                                                            
+#   writeDataStatus[10]          string         3     ACK                                                                            
+#   writeDataStatus[11]          string         3     ACK                                                                            
+#   writeDataStatus[12]          string         3     ACK                                                                            
+#   writeDataStatus[13]          string         3     ACK                                                                            
+#   writeDataStatus[14]          string         3     ACK                                                                            
+#   writeDataStatus[15]          string         3     ACK                                                                            
+#   writeDataStatus[16]          string         3     ACK                                                                            
+#   writeDataStatus[17]          string         3     ACK                                                                            
+#   writeDataStatus[18]          string         3     ACK                                                                            
+#   writeDataStatus[19]          string         3     ACK                                                                            
+#   writeDataStatus[20]          string         3     ACK                                                                            
+#   writeDataStatus[21]          string         3     ACK                                                                            
+#   writeDataStatus[22]          string         3     ACK                                                                            
+#   writeDataStatus[23]          string         3     ACK                                                                            
+#   writeDataStatus[24]          string         3     ACK                                                                            
+#   writeDataStatus[25]          string         3     ACK                                                                            
+#   writeDataStatus[26]          string         3     ACK                                                                            
+#   writeDataStatus[27]          string         3     ACK                                                                            
+#   writeDataStatus[28]          string         3     ACK                                                                            
+#   writeDataStatus[29]          string         3     ACK                                                                            
+#   writeDataStatus[30]          string         3     ACK                                                                            
+#   writeDataStatus[31]          string         3     ACK                                                                            
+#   writeDataStatus[32]          string         3     ACK                                                                            
+#   writeDataStatus[33]          string         3     ACK                                                                            
+#   writeDataStatus[34]          string         3     ACK                                                                            
+#   writeDataStatus[35]          string         3     ACK                                                                            
+#   writeDataStatus[36]          string         3     ACK                                                                            
+#   writeDataStatus[37]          string         3     ACK                                                                            
+#   writeDataStatus[38]          string         3     ACK                                                                            
+#   writeDataStatus[39]          string         3     ACK                                                                            
+#   writeDataStatus[40]          string         3     ACK                                                                            
+#   writeDataStatus[41]          string         3     ACK                                                                            
+#   writeDataStatus[42]          string         3     ACK                                                                            
+#   writeDataStatus[43]          string         3     ACK                                                                            
+#   writeDataStatus[44]          string         3     ACK                                                                            
+#   writeDataStatus[45]          string         3     ACK                                                                            
+#   writeDataStatus[46]          string         3     ACK                                                                            
+#   writeDataStatus[47]          string         3     ACK                                                                            
+#   writeDataStatus[48]          string         3     ACK                                                                            
+#   writeDataStatus[49]          string         3     ACK                                                                            
+#   writeDataStatus[50]          string         3     ACK                                                                            
+#   writeDataStatus[51]          string         3     ACK                                                                            
+#   writeDataStatus[52]          string         3     ACK                                                                            
+#   writeDataStatus[53]          string         3     ACK                                                                            
+#   writeDataStatus[54]          string         3     ACK                                                                            
+#   writeDataStatus[55]          string         3     ACK                                                                            
+#   writeDataStatus[56]          string         3     ACK                                                                            
+#   writeDataStatus[57]          string         3     ACK                                                                            
+#   writeDataStatus[58]          string         3     ACK                                                                            
+#   writeDataStatus[59]          string         3     ACK                                                                            
+#   writeDataStatus[60]          string         3     ACK                                                                            
+#   writeDataStatus[61]          string         3     ACK                                                                            
+#   writeDataStatus[62]          string         3     ACK                                                                            
+#   writeDataStatus[63]          string         3     ACK                                                                            
+# -----------------------------------------------------------------------------------------------------------------------------------
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(61) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Got item from sequencer
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(110) @ 90: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] Transaction type = SDR, calling drive_data
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 110: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [170] REG_WRITE: WDATAB <= 3b
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 170: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1188             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h3b              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 170: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[0] = 0x3b
+# [190] FIFO WRITE: din=3b addr=0 wr_ptr=0
+# [190] STATUS: wr_en=1 rd_en=0 full=0 empty=1 wr_ptr=0 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 190: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [250] REG_WRITE: WDATAB <= 7c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 250: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1291             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h7c              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[1] = 0x7c
+# [270] FIFO WRITE: din=7c addr=1 wr_ptr=1
+# [270] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=1 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 270: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [330] REG_WRITE: WDATAB <= cb
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 330: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1307             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hcb              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 330: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[2] = 0xcb
+# [350] FIFO WRITE: din=cb addr=2 wr_ptr=2
+# [350] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=2 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 350: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [410] REG_WRITE: WDATAB <= 30
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 410: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1323             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h30              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 410: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[3] = 0x30
+# [430] FIFO WRITE: din=30 addr=3 wr_ptr=3
+# [430] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=3 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 430: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [490] REG_WRITE: WDATAB <= da
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1339             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hda              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[4] = 0xda
+# [510] FIFO WRITE: din=da addr=4 wr_ptr=4
+# [510] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=4 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 510: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [570] REG_WRITE: WDATAB <= b5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 570: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1355             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hb5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 570: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[5] = 0xb5
+# [590] FIFO WRITE: din=b5 addr=5 wr_ptr=5
+# [590] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=5 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 590: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [650] REG_WRITE: WDATAB <= be
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 650: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1371             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hbe              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 650: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[6] = 0xbe
+# [670] FIFO WRITE: din=be addr=6 wr_ptr=6
+# [670] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=6 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 670: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [730] REG_WRITE: WDATAB <= 37
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 730: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1387             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h37              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 730: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[7] = 0x37
+# [750] FIFO WRITE: din=37 addr=7 wr_ptr=7
+# [750] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=7 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 750: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [810] REG_WRITE: WDATAB <= 3d
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 810: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1403             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h3d              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 810: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[8] = 0x3d
+# [830] FIFO WRITE: din=3d addr=8 wr_ptr=8
+# [830] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=8 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 830: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [890] REG_WRITE: WDATAB <= 12
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 890: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1419             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h12              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 890: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[9] = 0x12
+# [910] FIFO WRITE: din=12 addr=9 wr_ptr=9
+# [910] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=9 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 910: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [970] REG_WRITE: WDATAB <= 99
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 970: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1435             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h99              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 970: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[10] = 0x99
+# [990] FIFO WRITE: din=99 addr=10 wr_ptr=10
+# [990] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=10 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 990: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1050] REG_WRITE: WDATAB <= c0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1050: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1451             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hc0              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1050: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[11] = 0xc0
+# [1070] FIFO WRITE: din=c0 addr=11 wr_ptr=11
+# [1070] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=11 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1070: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1130] REG_WRITE: WDATAB <= 7c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1130: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1467             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h7c              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1130: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[12] = 0x7c
+# [1150] FIFO WRITE: din=7c addr=12 wr_ptr=12
+# [1150] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=12 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1150: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1210] REG_WRITE: WDATAB <= 14
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1210: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1483             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h14              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1210: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[13] = 0x14
+# [1230] FIFO WRITE: din=14 addr=13 wr_ptr=13
+# [1230] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=13 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1230: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1290] REG_WRITE: WDATAB <= b6
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1290: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1499             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hb6              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1290: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[14] = 0xb6
+# [1310] FIFO WRITE: din=b6 addr=14 wr_ptr=14
+# [1310] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=14 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1310: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1370] REG_WRITE: WDATAB <= b5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1370: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1515             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hb5              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1370: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[15] = 0xb5
+# [1390] FIFO WRITE: din=b5 addr=15 wr_ptr=15
+# [1390] STATUS: wr_en=1 rd_en=0 full=0 empty=0 wr_ptr=15 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1390: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1450] REG_WRITE: WDATAB <= ca
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1450: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1531             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hca              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1450: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[16] = 0xca
+# [1470] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1470: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1530] REG_WRITE: WDATAB <= 0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1530: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1547             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h0               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1530: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[17] = 0x0
+# [1550] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1550: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1610] REG_WRITE: WDATAB <= c2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1610: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1563             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hc2              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1610: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[18] = 0xc2
+# [1630] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1630: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1690] REG_WRITE: WDATAB <= bb
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1690: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1579             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hbb              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1690: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[19] = 0xbb
+# [1710] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1710: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1770] REG_WRITE: WDATAB <= 28
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1770: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1595             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h28              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1770: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[20] = 0x28
+# [1790] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1790: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1850] REG_WRITE: WDATAB <= 5f
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1850: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1611             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h5f              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1850: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[21] = 0x5f
+# [1870] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1870: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [1930] REG_WRITE: WDATAB <= e8
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 1930: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1627             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'he8              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 1930: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[22] = 0xe8
+# [1950] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 1950: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2010] REG_WRITE: WDATAB <= 9e
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2010: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1643             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h9e              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2010: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[23] = 0x9e
+# [2030] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2030: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2090] REG_WRITE: WDATAB <= 6a
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2090: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1659             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h6a              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2090: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[24] = 0x6a
+# [2110] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2110: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2170] REG_WRITE: WDATAB <= 2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2170: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1675             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h2               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2170: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[25] = 0x2
+# [2190] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2190: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2250] REG_WRITE: WDATAB <= e8
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2250: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1691             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'he8              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[26] = 0xe8
+# [2270] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2270: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2330] REG_WRITE: WDATAB <= 98
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2330: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1707             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h98              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2330: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[27] = 0x98
+# [2350] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2350: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2410] REG_WRITE: WDATAB <= ea
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2410: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1723             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hea              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2410: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[28] = 0xea
+# [2430] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2430: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2490] REG_WRITE: WDATAB <= 9f
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1739             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h9f              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[29] = 0x9f
+# [2510] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2510: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2570] REG_WRITE: WDATAB <= f0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2570: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1755             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hf0              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2570: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[30] = 0xf0
+# [2590] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2590: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2650] REG_WRITE: WDATAB <= bc
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2650: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1771             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hbc              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2650: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[31] = 0xbc
+# [2670] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2670: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2730] REG_WRITE: WDATAB <= d8
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2730: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1787             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hd8              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2730: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[32] = 0xd8
+# [2750] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2750: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2810] REG_WRITE: WDATAB <= 15
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2810: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1803             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h15              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2810: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[33] = 0x15
+# [2830] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2830: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2890] REG_WRITE: WDATAB <= ea
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2890: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1819             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hea              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2890: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[34] = 0xea
+# [2910] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2910: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [2970] REG_WRITE: WDATAB <= 26
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 2970: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1835             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h26              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 2970: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[35] = 0x26
+# [2990] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 2990: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3050] REG_WRITE: WDATAB <= e7
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3050: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1851             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'he7              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3050: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[36] = 0xe7
+# [3070] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3070: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3130] REG_WRITE: WDATAB <= fb
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3130: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1867             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hfb              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3130: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[37] = 0xfb
+# [3150] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3150: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3210] REG_WRITE: WDATAB <= 47
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3210: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1883             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h47              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3210: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[38] = 0x47
+# [3230] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3230: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3290] REG_WRITE: WDATAB <= e4
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3290: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1899             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'he4              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3290: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[39] = 0xe4
+# [3310] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3310: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3370] REG_WRITE: WDATAB <= 38
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3370: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1915             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h38              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3370: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[40] = 0x38
+# [3390] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3390: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3450] REG_WRITE: WDATAB <= 16
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3450: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1931             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h16              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3450: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[41] = 0x16
+# [3470] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3470: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3530] REG_WRITE: WDATAB <= a2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3530: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1947             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'ha2              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3530: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[42] = 0xa2
+# [3550] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3550: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3610] REG_WRITE: WDATAB <= 71
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3610: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1963             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h71              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3610: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[43] = 0x71
+# [3630] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3630: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3690] REG_WRITE: WDATAB <= cc
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3690: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1979             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hcc              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3690: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[44] = 0xcc
+# [3710] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3710: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3770] REG_WRITE: WDATAB <= b4
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3770: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @1995             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hb4              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3770: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[45] = 0xb4
+# [3790] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3790: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3850] REG_WRITE: WDATAB <= 5
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3850: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2011             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h5               
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3850: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[46] = 0x5
+# [3870] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3870: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [3930] REG_WRITE: WDATAB <= 13
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 3930: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2027             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h13              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 3930: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[47] = 0x13
+# [3950] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 3950: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4010] REG_WRITE: WDATAB <= 23
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4010: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2043             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h23              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4010: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[48] = 0x23
+# [4030] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4030: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4090] REG_WRITE: WDATAB <= 29
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4090: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2059             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h29              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4090: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[49] = 0x29
+# [4110] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4110: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4170] REG_WRITE: WDATAB <= 2d
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4170: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2075             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h2d              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4170: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[50] = 0x2d
+# [4190] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4190: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4250] REG_WRITE: WDATAB <= 21
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4250: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2091             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h21              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4250: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[51] = 0x21
+# [4270] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4270: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4330] REG_WRITE: WDATAB <= c2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4330: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2107             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hc2              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4330: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[52] = 0xc2
+# [4350] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4350: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4410] REG_WRITE: WDATAB <= f7
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4410: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2123             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hf7              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4410: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[53] = 0xf7
+# [4430] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4430: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4490] REG_WRITE: WDATAB <= c2
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4490: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2139             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hc2              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4490: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[54] = 0xc2
+# [4510] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4510: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4570] REG_WRITE: WDATAB <= ae
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4570: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2155             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hae              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4570: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[55] = 0xae
+# [4590] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4590: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4650] REG_WRITE: WDATAB <= c9
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4650: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2171             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hc9              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4650: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[56] = 0xc9
+# [4670] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4670: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4730] REG_WRITE: WDATAB <= 25
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4730: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2187             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h25              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4730: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[57] = 0x25
+# [4750] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4750: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4810] REG_WRITE: WDATAB <= 3b
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4810: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2203             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h3b              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4810: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[58] = 0x3b
+# [4830] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4830: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4890] REG_WRITE: WDATAB <= 3f
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4890: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2219             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h3f              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4890: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[59] = 0x3f
+# [4910] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4910: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [4970] REG_WRITE: WDATAB <= 1c
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 4970: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2235             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h1c              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 4970: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[60] = 0x1c
+# [4990] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 4990: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5050] REG_WRITE: WDATAB <= 4f
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5050: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2251             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h4f              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5050: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[61] = 0x4f
+# [5070] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5070: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5130] REG_WRITE: WDATAB <= ec
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5130: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2267             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hec              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5130: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[62] = 0xec
+# [5150] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5150: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5210] REG_WRITE: WDATAB <= c3
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5210: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2283             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hc3              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5210: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[63] = 0xc3
+# [5230] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5230: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5290] REG_WRITE: WDATAB <= 4e
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5290: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2299             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h4e              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5290: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[64] = 0x4e
+# [5310] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5310: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5370] REG_WRITE: WDATAB <= f7
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5370: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2315             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hf7              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5370: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[65] = 0xf7
+# [5390] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5390: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5450] REG_WRITE: WDATAB <= cd
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5450: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2331             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'hcd              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5450: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[66] = 0xcd
+# [5470] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5470: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5530] REG_WRITE: WDATAB <= 2f
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5530: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2347             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h2f              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5530: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[67] = 0x2f
+# [5550] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5550: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5610] REG_WRITE: WDATAB <= 70
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5610: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2363             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h70              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5610: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[68] = 0x70
+# [5630] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5630: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5690] REG_WRITE: WDATAB <= 64
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5690: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2379             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h64              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5690: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[69] = 0x64
+# [5710] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5710: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# [5770] REG_WRITE: WDATAB <= 73
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5770: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2395             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'h30              
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h73              
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(71) @ 5770: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [WDATAB_WRITE] Wrote byte[70] = 0x73
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(91) @ 5770: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [CTRL_DEBUG] CTRL value before update = 0x800023e8
+# [5790] STATUS: wr_en=1 rd_en=0 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/apb_master_agent_bfm/apb_master_driver_bfm.sv(134) @ 5790: reporter [DEBUG_MSHA] drive_apb_setup state = SETUP and state = 2
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(150) @ 5840: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] CTRL decoded: addr=0x68 dir=0 len=71 cmd_type=0x0 ccc=0x0
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_driver_proxy.sv(119) @ 5850: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_drv_proxy_h [apb_master_driver_proxy] AFTER :: received req packet 
+#  ---------------------------------------------------------------------
+# Name                          Type           Size  Value             
+# ---------------------------------------------------------------------
+# apb_master_tx                 apb_master_tx  -     @2411             
+#   pselx                       string         7     SLAVE_0           
+#   paddr                       integral       32    'hc               
+#   pwrite                      string         5     WRITE             
+#   pwdata                      integral       32    'h800023e8        
+#   transfer_size               string         0     ""                
+#   pstrb                       integral       4     'b1111            
+#   pprot                       string         18    NORMAL_SECURE_DATA
+#   prdata                      integral       32    'h0               
+#   pslverr                     string         8     NO_ERROR          
+#   no_of_wait_states_detected  integral       32    'd1               
+# ---------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(102) @ 5850: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [CTRL_DEBUG] CTRL mirrored value after update = 0x800023e8
+# RTL @ 5870: cmd_start after DAA
+# RTL @ 5890: start_sdr after DAA
+# MONITOR :: checking start at time 5940 scl_local=11 sda_local=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(617) @ 7060: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: local_addr = 0x68
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(622) @ 7060: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: cfg target_addr = 0x68
+# [7450] FIFO READ : dout=3b addr=0 rd_ptr=0
+# [7450] STATUS: wr_en=0 rd_en=1 full=1 empty=0 wr_ptr=16 rd_ptr=0
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 8660: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x3b
+# [8890] FIFO READ : dout=7c addr=1 rd_ptr=1
+# [8890] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=1
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 10100: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x7c
+# [10330] FIFO READ : dout=cb addr=2 rd_ptr=2
+# [10330] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=2
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 11540: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xcb
+# [11770] FIFO READ : dout=30 addr=3 rd_ptr=3
+# [11770] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=3
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 12980: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x30
+# [13210] FIFO READ : dout=da addr=4 rd_ptr=4
+# [13210] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=4
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 14420: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xda
+# [14650] FIFO READ : dout=b5 addr=5 rd_ptr=5
+# [14650] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=5
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 15860: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xb5
+# [16090] FIFO READ : dout=be addr=6 rd_ptr=6
+# [16090] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=6
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 17300: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xbe
+# [17530] FIFO READ : dout=37 addr=7 rd_ptr=7
+# [17530] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=7
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 18740: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x37
+# [18970] FIFO READ : dout=3d addr=8 rd_ptr=8
+# [18970] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=8
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 20180: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x3d
+# [20410] FIFO READ : dout=12 addr=9 rd_ptr=9
+# [20410] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=9
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 21620: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x12
+# [21850] FIFO READ : dout=99 addr=10 rd_ptr=10
+# [21850] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=10
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 23060: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x99
+# [23290] FIFO READ : dout=c0 addr=11 rd_ptr=11
+# [23290] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=11
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 24500: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xc0
+# [24730] FIFO READ : dout=7c addr=12 rd_ptr=12
+# [24730] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=12
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 25940: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x7c
+# [26170] FIFO READ : dout=14 addr=13 rd_ptr=13
+# [26170] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=13
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 27380: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0x14
+# [27610] FIFO READ : dout=b6 addr=14 rd_ptr=14
+# [27610] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=14
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 28820: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xb6
+# [29050] FIFO READ : dout=b5 addr=15 rd_ptr=15
+# [29050] STATUS: wr_en=0 rd_en=1 full=0 empty=0 wr_ptr=16 rd_ptr=15
+# UVM_INFO ../../src/hdl_top/target_agent_bfm/i3c_target_driver_bfm.sv(681) @ 30260: reporter [I3C_TARGET_DRIVER_BFM] DEBUG :: write data = 0xb5
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(270) @ 30601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [DEBUG_m_coverage] I3C_target_TX {i3c_target_tx} 2427 1 2431 @uvm_status_container@1 @uvm_object_string_pool__1@373 @uvm_event@597 @uvm_event@598 -1 18446744073709551615 18446744073709551615 18446744073709551615 null 0 0 0 null -1 0 -1 null null 0 {} null null 0 0 {0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} ACK {ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK} WRITE 104 {59 124 203 48 218 181 190 55 61 18 153 192 124 20 182 181} {ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK ACK} 0 SDR 0 0 0 0 0 {i3c_target_tx}
+# UVM_INFO ../../src/hvl_top/target//i3c_target_driver_proxy.sv(119) @ 30601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_drv_proxy_h [TGT_DRV_PROXY] item_done called
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(288) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_ADDR_MATCH] Address match: 0x68
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(301) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_OP_MATCH] Operation match: WRITE
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(313) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB] Write: APB sent 71 bytes, CTRL length=71, target received 16 bytes
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[0]: expected 0x3b got 0x3b
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[1]: expected 0x7c got 0x7c
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[2]: expected 0xcb got 0xcb
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[3]: expected 0x30 got 0x30
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[4]: expected 0xda got 0xda
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[5]: expected 0xb5 got 0xb5
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[6]: expected 0xbe got 0xbe
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[7]: expected 0x37 got 0x37
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[8]: expected 0x3d got 0x3d
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[9]: expected 0x12 got 0x12
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[10]: expected 0x99 got 0x99
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[11]: expected 0xc0 got 0xc0
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[12]: expected 0x7c got 0x7c
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[13]: expected 0x14 got 0x14
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[14]: expected 0xb6 got 0xb6
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(325) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_WDATA_MATCH] writeData[15]: expected 0xb5 got 0xb5
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(339) @ 30601: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_FIFO_OVERFLOW] APB sent 71 bytes, target got 16, RTL dropped 55
+# UVM_INFO ../../src/hvl_top/target/target_sequences//i3c_target_writeOperationWith8bitsData_seq.sv(71) @ 30601: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_seqr_h@@target_seq_write [i3c_target_writeOperationWith8bitsData_seq] finish_item returned - item sent to driver
+# UVM_INFO ../../src/hvl_top/test/ral_virtual_sequences//i3c_multi_wdatab_seq.sv(108) @ 55850: uvm_test_top.i3c_env_h.top_virtual_seqr_h@@sdrMultiWriteSeq [i3c_multi_wdatab_seq] SDR MULTI-BYTE WRITE completed
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 108850: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ../../src/hvl_top/env/i3c_scoreboard.sv(417) @ 108850: uvm_test_top.i3c_env_h.i3c_scoreboard_h [SB_SUMMARY] 
+# ============= SCOREBOARD SUMMARY =============
+#   APB transactions seen      : 72
+#   I3C target transactions    : 1
+#   -- SDR --
+#   Write byte pass / fail     : 16 / 0
+#   Read  byte pass / fail     : 0 / 0
+#   -- DAA --
+#   Devices seen               : 0
+#   Dyn address pass / fail    : 0 / 0
+#   Parity / ACK pass / fail   : 0 / 0
+# ==============================================
+# UVM_INFO ../../src/hvl_top/apb_master//apb_master_coverage.sv(121) @ 108850: uvm_test_top.i3c_env_h.apb_master_agent_h.apb_master_cov_h [apb_master_coverage] APB Master Agent Coverage = 24.13 %
+# 
+# --------------------------------------
+# target COVERAGE
+# --------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(306) @ 108850: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent SDR Coverage = 35.19 %
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(310) @ 108850: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent DAA Coverage = 0.00 %
+# UVM_INFO ../../src/hvl_top/target//i3c_target_coverage.sv(315) @ 108850: uvm_test_top.i3c_env_h.i3c_target_agent_h[0].i3c_target_cov_h [i3c_target_coverage] target Agent Total Coverage = 17.59 %
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :  285
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [APB_MASTER_DRIVER_BFM]     1
+# [APB_MASTER_MONITOR_BFM]     1
+# [CTRL_DEBUG]     2
+# [DEBUG_MSHA]    73
+# [DEBUG_m_coverage]     1
+# [I3C_TARGET_DRIVER_BFM]    18
+# [Questa UVM]     2
+# [RNTST]     1
+# [SB]     2
+# [SB_ADDR_MATCH]     1
+# [SB_FIFO_OVERFLOW]     1
+# [SB_OP_MATCH]     1
+# [SB_SUMMARY]     1
+# [SB_WDATA_MATCH]    16
+# [TEST_DONE]     1
+# [TGT_DRV_PROXY]     3
+# [UVMTOP]     1
+# [WDATAB_WRITE]    71
+# [apb master agent bfm]     1
+# [apb_master_coverage]     1
+# [apb_master_driver_proxy]    72
+# [apb_master_monitor_proxy]     1
+# [i3c_multi_wdatab_seq]     3
+# [i3c_multi_write_test]     4
+# [i3c_target_coverage]     3
+# [i3c_target_writeOperationWith8bitsData_seq]     3
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 108850 ns  Iteration: 53  Instance: /hvl_top
+# Saving coverage database on exit...
+# End time: 09:18:50 on May 06,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 4

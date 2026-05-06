@@ -1,229 +1,133 @@
-class i3c_multi_write_read_back_seq extends top_virtual_base_seq;  
-
-  
-
-  `uvm_object_utils(i3c_multi_write_read_back_seq)  
-
-  
-
-  uvm_status_e status;  
-
-  uvm_reg_data_t rdata;  
-
-  uvm_reg_data_t mirror_val;  
-
-  bit sdr_done;  
-
-  
-
-  bit [7:0] tx_data [3] = '{8'h11,8'h22,8'h33};  
-
-  bit [7:0] rx_data [3];  
-
-  
-
-  function new(string name="i3c_multi_write_read_back_seq");  
-
-    super.new(name);  
-
-  endfunction  
-
-  
-
-  task body();  
-
-  
-
-    super.body();  
-
-  
-
-    i3c_target_writeOperationWith8bitsData_seq multi_wr_target_seq;  
-
-    i3c_target_readOperationWith8bitsData_seq  multi_rd_target_seq;    
-
-  
-
-    `uvm_info(get_type_name(), "Starting MULTI WRITE READ BACK test", UVM_LOW)  
-
-  
-
-    fork  
-
-      forever begin  
-
-        multi_wr_target_seq =  
-
-        i3c_target_writeOperationWith8bitsData_seq::type_id::create("multi_wr_target_seq");  
-
-  
-
-        multi_wr_target_seq.start(topEnvConfigHandle.i3c_target_seqr_h);  
-
-      end     
-
-  
-
-      forever begin  
-
-        multi_rd_target_seq=  
-
-        i3c_target_readOperationWith8bitsData_seq::type_id::create("multi_rd_target_seq");  
-
-  
-
-        multi_rd_target_seq.start(topEnvConfigHandle.i3c_target_seqr_h);  
-
-      end                                                                                                       
-
-    join_none;  
-
-  
-
-  
-
-     
-
-    foreach(tx_data[i]) begin  
-
-      topEnvConfigHandle.regmodel.wdatab_inst.write(status, tx_data[i]);  
-
-  
-
-      mirror_val = topEnvConfigHandle.regmodel.wdatab_inst.get_mirrored_value();  
-
-      `uvm_info("WDATAB_DEBUG",  
-
-        $sformatf("Mirror after write[%0d] = %0h",i,mirror_val),  
-
-        UVM_LOW)  
-
-    end  
-
-  
-
-  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.address.set(7'h68);  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.length.set(8'd3);  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.direction.set(1'b0);  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.cmd_type.set(2'd0);  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.start.set(1'b1);  
-
-  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.update(status);  
-
-  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.mirror(status, UVM_CHECK);  
-
-  
-
-  
-
-    sdr_done = 0;  
-
-  
-
-    while(!sdr_done) begin  
-
-      topEnvConfigHandle.regmodel.status_inst.read(status, rdata);  
-
-      sdr_done = rdata[0];  
-
-      @(posedge topEnvConfigHandle.vif.clk);  
-
-    end  
-
-  
-
-    topEnvConfigHandle.regmodel.status_inst.mirror(status, UVM_CHECK);  
-
-  
-
-  
-
-  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.direction.set(1'b1);  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.start.set(1'b1);  
-
-  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.update(status);  
-
-  
-
-    topEnvConfigHandle.regmodel.ctrl_inst.mirror(status, UVM_CHECK);  
-
-  
-
-  
-
-    sdr_done = 0;  
-
-  
-
-    while(!sdr_done) begin  
-
-      topEnvConfigHandle.regmodel.status_inst.read(status, rdata);  
-
-      sdr_done = rdata[0];  
-
-      @(posedge topEnvConfigHandle.vif.clk);  
-
-    end  
-
-  
-
-  
-
-    foreach(rx_data[i]) begin  
-
-      topEnvConfigHandle.regmodel.rdatab_inst.read(status, rdata);  
-
-      rx_data[i] = rdata;  
-
-  
-
-      topEnvConfigHandle.regmodel.rdatab_inst.mirror(status, UVM_NO_CHECK);  
-
-    end  
-
-  
-
-  
-
-    foreach(tx_data[i]) begin  
-
-      if(rx_data[i] == tx_data[i])  
-
-        `uvm_info("MULTI_RW",  
-
-          $sformatf("Match index %0d data %0h",i,rx_data[i]),  
-
-          UVM_MEDIUM)  
-
-      else  
-
-        `uvm_error("MULTI_RW",  
-
-          $sformatf("Mismatch index %0d expected %0h got %0h",  
-
-          i,tx_data[i],rx_data[i]))  
-
-    end  
-
-  
-
-  endtask  
-
-  
-
-endclass 
+`ifndef I3C_MULTI_WRITE_READ_BACK_SEQ_INCLUDED_
+`define I3C_MULTI_WRITE_READ_BACK_SEQ_INCLUDED_
+
+class i3c_multi_write_read_back_seq extends top_virtual_base_seq;
+  `uvm_object_utils(i3c_multi_write_read_back_seq)
+
+  uvm_status_e   status;
+  uvm_reg_data_t rdata;
+  uvm_reg_data_t mirror_val;
+
+  // ── 3 bytes = 24 bits ─────────────────────────────────────
+  // Hits WRITEDATA_WIDTH_3 and READDATA_WIDTH_3 bins
+  bit [7:0] tx_data[3] = '{8'h11, 8'h22, 8'h33};
+  bit [7:0] rx_data[3];
+
+  function new(string name = "i3c_multi_write_read_back_seq");
+    super.new(name);
+  endfunction
+
+  task body();
+    i3c_target_writeOperationWith8bitsData_seq multi_wr_target_seq;
+    i3c_target_readOperationWith8bitsData_seq  multi_rd_target_seq;
+
+    super.body();
+
+    if(i3c_env_cfg_h == null)
+      `uvm_fatal("CFG_NULL", "i3c_env_cfg_h is NULL")
+
+    `uvm_info(get_type_name(),
+      "Starting 24-bit WRITE READ BACK test", UVM_LOW)
+
+    // ── Start target write seq in background ──────────────────
+    fork
+      begin
+        multi_wr_target_seq =
+          i3c_target_writeOperationWith8bitsData_seq::type_id::create(
+            "multi_wr_target_seq");
+        multi_wr_target_seq.start(p_sequencer.i3c_target_seqr_h);
+      end
+    join_none
+
+    // ── Write 3 bytes to WDATAB ───────────────────────────────
+    foreach(tx_data[i]) begin
+      i3c_env_cfg_h.regBlockHandle.wdatab_inst.write(
+        status, tx_data[i], .parent(this));
+
+      mirror_val =
+        i3c_env_cfg_h.regBlockHandle.wdatab_inst.get_mirrored_value();
+      `uvm_info("WDATAB_DEBUG",
+        $sformatf("Mirror after write[%0d] = 0x%0h", i, mirror_val),
+        UVM_LOW)
+    end
+
+    // ── Trigger CTRL for 3-byte write ─────────────────────────
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.address.set(
+      i3c_env_cfg_h.i3c_target_agent_cfg_h[0].targetAddress);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.length.set(8'd3);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.direction.set(1'b0); // write
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.cmd_type.set(2'b00);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.start.set(1'b1);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.update(status, .parent(this));
+
+    `uvm_info(get_type_name(), "3-byte write triggered", UVM_LOW)
+
+    // ── Wait for write to complete ────────────────────────────
+    #10us;
+
+    // ── Start target read seq in background ───────────────────
+/*
+    fork
+      begin
+        multi_rd_target_seq =
+          i3c_target_readOperationWith8bitsData_seq::type_id::create(
+            "multi_rd_target_seq");
+multi_rd_target_seq.num_bytes = 3;    
+    multi_rd_target_seq.start(p_sequencer.i3c_target_seqr_h);
+      end
+    join_none
+*/
+// ✅ CORRECT — create, set num_bytes, THEN fork+start:
+multi_rd_target_seq = i3c_target_readOperationWith8bitsData_seq::
+                      type_id::create("multi_rd_target_seq");
+multi_rd_target_seq.num_bytes = 3;  // ✅ set BEFORE fork
+
+fork
+  begin
+    multi_rd_target_seq.start(p_sequencer.i3c_target_seqr_h);
+  end
+join_none
+
+    // ── Trigger CTRL for 3-byte read ──────────────────────────
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.address.set(
+      i3c_env_cfg_h.i3c_target_agent_cfg_h[0].targetAddress);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.length.set(8'd3);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.direction.set(1'b1); // read
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.cmd_type.set(2'b00);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.start.set(1'b1);
+    i3c_env_cfg_h.regBlockHandle.ctrl_inst.update(status, .parent(this));
+
+    `uvm_info(get_type_name(), "3-byte read triggered", UVM_LOW)
+
+    // ── Wait for read to complete ─────────────────────────────
+    #10us;
+
+    // ── Read back from RDATAB and verify ─────────────────────
+    foreach(rx_data[i]) begin
+      i3c_env_cfg_h.regBlockHandle.rdatab_inst.read(
+        status, rdata, .parent(this));
+      rx_data[i] = rdata[7:0];
+      `uvm_info("READ_BACK",
+        $sformatf("RDATAB[%0d] = 0x%0h", i, rx_data[i]), UVM_LOW)
+    end
+
+    // ── Compare tx vs rx ──────────────────────────────────────
+    foreach(tx_data[i]) begin
+      if(rx_data[i] == tx_data[i])
+        `uvm_info("MULTI_RW_MATCH",
+          $sformatf("Match  [%0d]: expected=0x%0h got=0x%0h",
+                    i, tx_data[i], rx_data[i]), UVM_LOW)
+      else
+        `uvm_error("MULTI_RW_MISMATCH",
+          $sformatf("Mismatch[%0d]: expected=0x%0h got=0x%0h",
+                    i, tx_data[i], rx_data[i]))
+    end
+
+    `uvm_info(get_type_name(),
+      "24-bit WRITE READ BACK complete", UVM_LOW)
+
+  endtask : body
+
+endclass : i3c_multi_write_read_back_seq
+
+`endif
