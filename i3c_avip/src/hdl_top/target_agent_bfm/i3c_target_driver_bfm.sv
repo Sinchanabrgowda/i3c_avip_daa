@@ -128,80 +128,7 @@ interface i3c_target_driver_bfm(
     disable fork;
   endtask : driveReadDataAndSampleACK
 
-  // ============================================================
-  // ✅NEW — DAA drive_data task
-  // Called by driver proxy when txn_type == DAA
-  // Follows RTL DAA FSM flow:
-  //   SEND_7E_W → SEND_ENTDAA → REP_START →
-  //   SEND_7E_R → ARB_BITS → ASSIGN → LOOP/STOP
-  // ============================================================
-/*  
-task drive_daa_data(inout i3c_transfer_bits_s dataPacketStruck,
-                      input i3c_transfer_cfg_s  configPacketStruck,
-                      // DAA specific outputs
-                      output bit [47:0] pid_out,
-                      output bit [7:0]  bcr_out,
-                      output bit [7:0]  dcr_out,
-                      output bit [6:0]  dyn_addr_out,
-                      output bit        daa_ack_out);
-
-    bit [63:0] arb_shift;  // {PID[47:0], BCR[7:0], DCR[7:0]}
-    bit [7:0]  dyn_addr_with_parity;
-
-    `uvm_info(name, "DAA transaction started", UVM_NONE)
-
-    // Detect START condition ──────────────────────
-    detect_start();
-    `uvm_info(name, "DAA: START detected", UVM_NONE)
-
-    // Sample broadcast address 0x7E + W ───────────
-    // RTL sends {7'h7E, 1'b0} = 0xFC
-    // Target samples 8 bits but this is broadcast so no ACK check
-    sample_daa_broadcast_address(dataPacketStruck);
-
-    //  Sample ENTDAA CCC = 0x07 ────────────────────
-    sample_daa_ccc_byte(dataPacketStruck);
-
-    // Detect REPEATED START ───────────────────────
-    detect_repeated_start();
-    `uvm_info(name, "DAA: REPEATED START detected", UVM_NONE)
-
-    // Sample 0x7E + R ─────────────────────────────
-    sample_daa_broadcast_read(dataPacketStruck);
-
-    //  Drive PID + BCR + DCR (64 bits total) ───────
-    // Target drives its identification on SDA
-    // RTL samples these bits in ARB_BITS state
-    drive_daa_pid_bcr_dcr(
-      configPacketStruck,
-      arb_shift,
-      pid_out,
-      bcr_out,
-      dcr_out
-    );
-
-    //  Sample dynamic address from controller ───────
-    // RTL sends {dyn_addr, parity} = 8 bits
-    sample_daa_dynamic_address(
-      dyn_addr_out,
-      dyn_addr_with_parity,
-      daa_ack_out
-    );
-
-    //  ACK or NACK the dynamic address ──────────────
-    // Target ACKs if address is acceptable
-    driveAddressAck(daa_ack_out);
-
-    // Detect STOP ──────────────────────────────────
-    detect_stop();
-    `uvm_info(name, "DAA: STOP detected - DAA complete", UVM_NONE)
-
-    // Fill in struct fields
-    dataPacketStruck.targetAddress       = 7'h7E; // broadcast
-    dataPacketStruck.targetAddressStatus = ACK;
-
-  endtask : drive_daa_data
-*/
+ 
 
 task drive_daa_data(inout i3c_transfer_bits_s dataPacketStruck,
                     input i3c_transfer_cfg_s  configPacketStruck,
@@ -224,12 +151,12 @@ task drive_daa_data(inout i3c_transfer_bits_s dataPacketStruck,
   detect_repeated_start();
   sample_daa_broadcast_read(dataPacketStruck);
 
-  // ✅ Pass PID/BCR/DCR from struct (which came from sequence randomization)
+  //  Pass PID/BCR/DCR from struct (which came from sequence randomization)
   drive_daa_pid_bcr_dcr(
     configPacketStruck,
-    dataPacketStruck.pid,   // ✅ from randomized sequence
-    dataPacketStruck.bcr,   // ✅ from randomized sequence
-    dataPacketStruck.dcr,   // ✅ from randomized sequence
+    dataPacketStruck.pid,   //  from randomized sequence
+    dataPacketStruck.bcr,   //  from randomized sequence
+    dataPacketStruck.dcr,   //  from randomized sequence
     arb_shift,
     pid_out,
     bcr_out,
@@ -362,130 +289,6 @@ task sample_daa_broadcast_read(inout i3c_transfer_bits_s pkt);
   drive_sda(1'b1);           // release bus
 
 endtask : sample_daa_broadcast_read
-/*
- //  drive PID + BCR + DCR ────────────────────
-   task drive_daa_pid_bcr_dcr(
-    input  i3c_transfer_cfg_s cfg,
-    output bit [63:0]  arb_shift_out,
-    output bit [47:0]  pid_out,
-    output bit [7:0]   bcr_out,
-    output bit [7:0]   dcr_out);
-
-    // Use fixed test values for PID, BCR, DCR
-    // These should come from config in a real implementation
-  automatic  bit [47:0] pid_val = 48'hAABBCCDDEEFF;
-    automatic bit [7:0]  bcr_val = 8'h00;  // target, no HDR
-   automatic  bit [7:0]  dcr_val = 8'h00;  // example device class
-    bit [63:0] full_id;
-
-    full_id = {pid_val, bcr_val, dcr_val};
-
-    `uvm_info(name,
-      $sformatf("DAA: driving PID=%0h BCR=%0h DCR=%0h",
-                pid_val, bcr_val, dcr_val), UVM_NONE)
-
-    // Drive 64 bits MSB first on SCL negedge
-    for(int k = 63; k >= 0; k--) begin
-      detectEdge_scl(NEGEDGE);
-      drive_sda(full_id[k]);
-    end
-
-    // Release SDA after driving
-    drive_sda(1);
-
-    arb_shift_out = full_id;
-    pid_out       = pid_val;
-    bcr_out       = bcr_val;
-    dcr_out       = dcr_val;
-
-    `uvm_info(name, "DAA: PID+BCR+DCR driven on bus", UVM_HIGH)
-  endtask : drive_daa_pid_bcr_dcr
-*/
-/*
-task drive_daa_pid_bcr_dcr(
-  input  i3c_transfer_cfg_s cfg,
-  output bit [63:0] arb_shift_out,
-  output bit [47:0] pid_out,
-  output bit [7:0]  bcr_out,
-  output bit [7:0]  dcr_out);
-automatic  bit [47:0] pid_val = cfg.pid;   // ← use config, not hardcoded
- automatic  bit [7:0]  bcr_val = cfg.bcr;   // ← use config
-automatic  bit [7:0]  dcr_val = cfg.dcr;   // ← use config
-automatic  bit [63:0] full_id;
-automatic  bit [7:0]  curr_byte;
-
-  full_id = {pid_val, bcr_val, dcr_val};
-
-  `uvm_info(name,
-    $sformatf("DAA: driving PID=%0h BCR=%0h DCR=%0h",
-              pid_val, bcr_val, dcr_val), UVM_NONE)
-
-
-
-  // Drive byte by byte, each byte MSB first
-  // byte7=PID[47:40] ... byte2=PID[7:0], byte1=BCR, byte0=DCR
-  for(int byte_idx = 7; byte_idx >= 0; byte_idx--) begin
-    curr_byte = full_id[byte_idx*8 +: 8];
-    for(int bit_idx = 7; bit_idx >= 0; bit_idx--) begin
-       drive_sda(curr_byte[bit_idx]);  // drive first
-    detectEdge_scl(POSEDGE);     
-      detectEdge_scl(NEGEDGE);
-    end
-  end
-
-  // Release SDA after all bits driven
-  drive_sda(1'b1);
-
-  arb_shift_out = full_id;
-  pid_out       = pid_val;
-  bcr_out       = bcr_val;
-  dcr_out       = dcr_val;
-
-  `uvm_info(name, "DAA: PID+BCR+DCR driven on bus", UVM_HIGH)
-endtask : drive_daa_pid_bcr_dcr
-*/
-
-/*
-task drive_daa_pid_bcr_dcr(
-  input  i3c_transfer_cfg_s cfg,
-  // ✅ ADD these inputs from struct
-  input  bit [47:0]  pid_in,
-  input  bit [7:0]   bcr_in,
-  input  bit [7:0]   dcr_in,
-  output bit [63:0]  arb_shift_out,
-  output bit [47:0]  pid_out,
-  output bit [7:0]   bcr_out,
-  output bit [7:0]   dcr_out);
-
-  bit [63:0] full_id;
-
-  // ✅ Use values from sequence item, not hardcoded
-  full_id = {pid_in, bcr_in, dcr_in};
-
-  `uvm_info(name,
-    $sformatf("DAA: driving PID=%0h BCR=%0h DCR=%0h",
-              pid_in, bcr_in, dcr_in), UVM_NONE)
-
-  for(int k = 63; k >= 0; k--) begin
-detectEdge_scl(POSEDGE);
-
-    detectEdge_scl(NEGEDGE);
-
-    drive_sda(full_id[k]);
-
-  end
-
-  drive_sda(1);
-
-  arb_shift_out = full_id;
-  pid_out       = pid_in;
-  bcr_out       = bcr_in;
-  dcr_out       = dcr_in;
-
-  `uvm_info(name, "DAA: PID+BCR+DCR driven on bus", UVM_HIGH)
-
-endtask : drive_daa_pid_bcr_dcr
-  */
 
 task drive_daa_pid_bcr_dcr(
   input  i3c_transfer_cfg_s cfg,
