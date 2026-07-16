@@ -44,9 +44,6 @@ function void i3c_env::build_phase(uvm_phase phase);
     `uvm_fatal("FATAL_ENV_CONFIG", $sformatf("Couldn't get the env_config from config_db"))
   end
 
-  // ✅FIX + DAA: resolve no_of_daa_devices default here,
-  // before child components are built, so scoreboard can
-  // read it during its own build_phase.
 
   if(i3c_env_cfg_h.has_daa && i3c_env_cfg_h.no_of_daa_devices == 0)
     i3c_env_cfg_h.no_of_daa_devices = i3c_env_cfg_h.no_of_targets;
@@ -123,56 +120,6 @@ function void i3c_env::connect_phase(uvm_phase phase);
 
 endfunction
 
-/*
-function void i3c_env::connect_phase(uvm_phase phase);
-  super.connect_phase(phase);
-
-  if(i3c_env_cfg_h.has_virtual_sequencer) begin
-    top_virtual_seqr_h.apb_master_seqr_h =
-      apb_master_agent_h.apb_master_seqr_h;
-
-    foreach(i3c_target_agent_h[i]) begin
-      top_virtual_seqr_h.i3c_target_seqr_h[i] =
-        i3c_target_agent_h[i].i3c_target_seqr_h;
-    end
-  end else begin
-    // has_virtual_sequencer=0 but APB seqr may still be needed
-    // for RAL — leave disconnected, test drives directly.
-    if(apb_env_cfg_h.has_virtual_seqr) begin
-      top_virtual_seqr_h.apb_master_seqr_h =
-        apb_master_agent_h.apb_master_seqr_h;
-    end
-  end
-
-  // ── Scoreboard connections ────────────────────────────────
-  if(i3c_env_cfg_h.has_scoreboard) begin
-
-    // Connect all target monitor analysis ports to scoreboard.
-    // Both SDR and DAA i3c_target_tx items flow through the
-    // same port — scoreboard distinguishes by txn_type field.
-    foreach(i3c_target_agent_h[i]) begin
-      i3c_target_agent_h[i].i3c_target_mon_proxy_h.target_analysis_port.connect(
-        i3c_scoreboard_h.target_analysis_fifo.analysis_export);
-    end
-
-    // APB master analysis port → scoreboard
-    apb_master_agent_h.apb_master_mon_proxy_h.apb_master_analysis_port.connect(
-      i3c_scoreboard_h.apb_analysis_fifo.analysis_export);
-
-  end
-
-  // ── RAL connections (unchanged) ──────────────────────────
-  topPredictor.map     = regmodel.default_map;
-  topPredictor.adapter = adapter_inst;
-
-  regmodel.default_map.set_sequencer(
-    .sequencer(apb_master_agent_h.apb_master_seqr_h),
-    .adapter(adapter_inst));
-  regmodel.default_map.set_auto_predict(0);
-
-  apb_master_agent_h.apb_master_mon_proxy_h.apb_master_analysis_port.connect(
-    topPredictor.bus_in);
-
-endfunction : connect_phase
+ 
 */
 `endif
